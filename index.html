@@ -3,1652 +3,544 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>4D AI Labs | Intelligence for Africa's Tomorrow</title>
-    <meta name="description" content="AI-powered solutions combining drones, satellites, and predictive intelligence for agriculture, development, and resource optimization across Africa.">
-    <meta property="og:title" content="4D AI Labs - Intelligence for Africa's Tomorrow">
-    <meta property="og:description" content="Prevention over reaction. Optimization over waste. Foresight over hindsight. AI solutions designed for African realities.">
+    <title>4D AI Labs | Practical AI for Lesotho & Southern Africa</title>
+    <meta name="description" content="We build practical AI tools for governments, NGOs and businesses in Lesotho and South Africa. Offline-first, Sesotho support, local pricing.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #006838;
             --primary-dark: #004d29;
-            --accent: #00E5A0;
-            --accent-glow: rgba(0, 229, 160, 0.3);
-            --electric: #00D4FF;
-            --gold: #FFB800;
-            --coral: #FF6B6B;
-            --dark: #0A0F1C;
-            --dark-surface: #111827;
-            --gray: #6B7280;
-            --light: #F8FAFC;
+            --accent: #00D98B;
+            --dark: #0F172A;
+            --dark-surface: #1E293B;
+            --gray: #64748B;
+            --light-gray: #94A3B8;
             --white: #FFFFFF;
+            --border: #334155;
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body { 
-            font-family: 'DM Sans', sans-serif; 
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; 
             color: var(--white); 
             line-height: 1.6; 
             background: var(--dark);
-            overflow-x: hidden; 
+            font-size: 17px;
         }
 
-        /* Animations */
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
-        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        @keyframes scan { 0% { top: 0; } 50% { top: calc(100% - 2px); } 100% { top: 0; } }
-        @keyframes glow { 0%, 100% { box-shadow: 0 0 20px var(--accent-glow); } 50% { box-shadow: 0 0 40px var(--accent-glow), 0 0 60px var(--accent-glow); } }
-        @keyframes slideIn { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
-        @keyframes countUp { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }
-        @keyframes orbit { from { transform: rotate(0deg) translateX(150px) rotate(0deg); } to { transform: rotate(360deg) translateX(150px) rotate(-360deg); } }
-        @keyframes dataFlow { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
-
-        .animate-on-scroll { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
-        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
-
+        /* Utility */
+        .container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem; }
+        .section { padding: 4rem 0; }
+        .section-border { border-top: 1px solid var(--border); }
+        
         /* Navigation */
         .nav { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            right: 0; 
-            z-index: 1000; 
-            padding: 1.2rem 2rem; 
-            transition: all 0.4s ease; 
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000; 
+            padding: 1rem 1.5rem; 
+            background: rgba(15, 23, 42, 0.95); 
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
         }
-        .nav.scrolled { 
-            background: rgba(10, 15, 28, 0.95); 
-            backdrop-filter: blur(20px); 
-            border-bottom: 1px solid rgba(0, 229, 160, 0.1);
-        }
-        .nav-container { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
-        .nav-logo img { height: 40px; }
-        .nav-brand { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.3rem; color: var(--white); }
+        .nav-container { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+        .nav-logo img { height: 36px; }
+        .nav-brand { font-weight: 700; font-size: 1.1rem; color: var(--white); }
         .nav-brand span { color: var(--accent); }
-        .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
-        .nav-links a { 
-            text-decoration: none; 
-            color: rgba(255,255,255,0.7); 
-            font-weight: 500; 
-            font-size: 0.9rem; 
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-        .nav-links a:hover { color: var(--white); }
-        .nav-links a:hover::after { width: 100%; }
         .nav-cta { 
-            background: linear-gradient(135deg, var(--accent) 0%, #00B880 100%); 
-            color: var(--dark) !important; 
-            padding: 0.7rem 1.5rem; 
-            border-radius: 8px; 
-            font-weight: 600;
-            border: none;
+            background: var(--accent); color: var(--dark); 
+            padding: 0.6rem 1.2rem; border-radius: 6px; 
+            font-weight: 600; font-size: 0.9rem;
+            text-decoration: none; transition: all 0.2s;
         }
-        .nav-cta::after { display: none; }
-        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 30px var(--accent-glow); }
-        .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
-        .mobile-menu-btn span { display: block; width: 25px; height: 2px; background: var(--white); margin: 6px 0; transition: all 0.3s ease; border-radius: 2px; }
+        .nav-cta:hover { opacity: 0.9; }
 
-        /* Hero Section */
+        /* Hero */
         .hero { 
-            min-height: 100vh; 
-            position: relative; 
-            display: flex; 
-            align-items: center; 
-            overflow: hidden;
-            background: radial-gradient(ellipse at 20% 50%, rgba(0, 104, 56, 0.15) 0%, transparent 50%),
-                        radial-gradient(ellipse at 80% 20%, rgba(0, 229, 160, 0.1) 0%, transparent 40%),
-                        radial-gradient(ellipse at 50% 100%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
-                        var(--dark);
+            padding: 7rem 0 4rem; 
+            background: linear-gradient(180deg, var(--dark) 0%, var(--dark-surface) 100%);
         }
-        
-        .hero-grid-bg {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: 
-                linear-gradient(rgba(0, 229, 160, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 229, 160, 0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
-            animation: pulse 4s ease-in-out infinite;
-        }
-
-        .hero-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.5;
-        }
-        .hero-orb-1 { width: 500px; height: 500px; background: var(--primary); top: -200px; right: -100px; animation: float 8s ease-in-out infinite; }
-        .hero-orb-2 { width: 300px; height: 300px; background: var(--accent); bottom: -100px; left: 10%; animation: float 6s ease-in-out infinite reverse; }
-        .hero-orb-3 { width: 200px; height: 200px; background: var(--electric); top: 40%; right: 20%; animation: float 10s ease-in-out infinite; }
-
-        .hero-container { 
-            max-width: 1300px; 
-            margin: 0 auto; 
-            padding: 0 2rem; 
-            display: grid; 
-            grid-template-columns: 1.1fr 0.9fr; 
-            gap: 4rem; 
-            align-items: center; 
-            position: relative; 
-            z-index: 1; 
-        }
-        
-        .hero-content { padding-top: 2rem; }
-        .hero-eyebrow { 
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(0, 229, 160, 0.1);
-            border: 1px solid rgba(0, 229, 160, 0.3);
-            padding: 0.5rem 1rem; 
-            border-radius: 50px; 
-            font-size: 0.85rem; 
-            font-weight: 600; 
-            letter-spacing: 1px; 
-            text-transform: uppercase; 
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-            animation: fadeInUp 0.8s ease forwards;
-        }
-        .hero-eyebrow::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: var(--accent);
-            border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        .hero-title { 
-            font-family: 'Syne', sans-serif; 
-            font-size: 4rem; 
-            font-weight: 800; 
-            line-height: 1.1; 
-            margin-bottom: 1.5rem; 
-            animation: fadeInUp 0.8s ease 0.2s forwards; 
-            opacity: 0;
-            letter-spacing: -1px;
-        }
-        .hero-title .gradient-text { 
-            background: linear-gradient(135deg, var(--accent) 0%, var(--electric) 50%, var(--accent) 100%);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: dataFlow 3s linear infinite;
-        }
-        .hero-title .highlight {
-            position: relative;
+        .hero-tagline {
             display: inline-block;
-        }
-        .hero-title .highlight::after {
-            content: '';
-            position: absolute;
-            bottom: 5px;
-            left: 0;
-            right: 0;
-            height: 12px;
-            background: rgba(0, 229, 160, 0.3);
-            z-index: -1;
-            transform: skewX(-5deg);
-        }
-        
-        .hero-subtitle { 
-            font-size: 1.25rem; 
-            color: rgba(255,255,255,0.7); 
-            margin-bottom: 2rem; 
-            line-height: 1.8; 
-            animation: fadeInUp 0.8s ease 0.4s forwards; 
-            opacity: 0;
-            max-width: 540px;
-        }
-        
-        .hero-buttons { 
-            display: flex; 
-            gap: 1rem; 
-            animation: fadeInUp 0.8s ease 0.6s forwards; 
-            opacity: 0;
-            flex-wrap: wrap;
-        }
-        
-        .btn { 
-            display: inline-flex; 
-            align-items: center; 
-            gap: 0.5rem; 
-            padding: 1rem 2rem; 
-            border-radius: 10px; 
-            font-weight: 600; 
-            text-decoration: none; 
-            transition: all 0.3s ease; 
-            cursor: pointer; 
-            border: none; 
-            font-size: 1rem;
-            font-family: 'DM Sans', sans-serif;
-        }
-        .btn-primary { 
-            background: linear-gradient(135deg, var(--accent) 0%, #00B880 100%);
-            color: var(--dark);
-        }
-        .btn-primary:hover { 
-            transform: translateY(-3px); 
-            box-shadow: 0 15px 40px var(--accent-glow);
-        }
-        .btn-outline { 
-            background: transparent; 
-            color: var(--white); 
-            border: 2px solid rgba(255,255,255,0.2);
-        }
-        .btn-outline:hover { 
-            background: rgba(255,255,255,0.1);
-            border-color: var(--accent);
+            background: rgba(0, 217, 139, 0.1);
+            border: 1px solid rgba(0, 217, 139, 0.3);
             color: var(--accent);
-        }
-
-        /* Hero Visual - AI Visualization */
-        .hero-visual {
-            position: relative;
-            animation: fadeInUp 1s ease 0.8s forwards;
-            opacity: 0;
-        }
-        
-        .ai-brain {
-            position: relative;
-            width: 100%;
-            max-width: 500px;
-            aspect-ratio: 1;
-            margin: 0 auto;
-        }
-        
-        .brain-core {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            border-radius: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: glow 3s ease-in-out infinite;
-            box-shadow: 0 0 60px var(--accent-glow);
-        }
-        
-        .brain-core svg {
-            width: 60px;
-            height: 60px;
-            fill: var(--white);
-        }
-        
-        .orbit-ring {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border: 1px dashed rgba(0, 229, 160, 0.3);
-            border-radius: 50%;
-        }
-        .orbit-ring-1 { width: 250px; height: 250px; }
-        .orbit-ring-2 { width: 350px; height: 350px; }
-        .orbit-ring-3 { width: 450px; height: 450px; }
-        
-        .orbit-item {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 60px;
-            height: 60px;
-            margin: -30px;
-            background: var(--dark-surface);
-            border: 1px solid rgba(0, 229, 160, 0.3);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            animation: orbit 20s linear infinite;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        .orbit-item:nth-child(1) { animation-duration: 15s; }
-        .orbit-item:nth-child(2) { animation-duration: 20s; animation-delay: -5s; }
-        .orbit-item:nth-child(3) { animation-duration: 25s; animation-delay: -10s; }
-        .orbit-item:nth-child(4) { animation-duration: 18s; animation-delay: -3s; animation-direction: reverse; }
-        .orbit-item:nth-child(5) { animation-duration: 22s; animation-delay: -7s; animation-direction: reverse; }
-        .orbit-item:nth-child(6) { animation-duration: 28s; animation-delay: -12s; }
-
-        /* Philosophy Section */
-        .philosophy {
-            padding: 8rem 2rem;
-            background: var(--dark-surface);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .philosophy::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-        }
-        
-        .philosophy-container {
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-        
-        .philosophy-header {
-            text-align: center;
-            margin-bottom: 5rem;
-        }
-        
-        .section-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(0, 229, 160, 0.1);
-            border: 1px solid rgba(0, 229, 160, 0.2);
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
             font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-        }
-        
-        .section-title {
-            font-family: 'Syne', sans-serif;
-            font-size: 3rem;
-            font-weight: 700;
             margin-bottom: 1rem;
-            letter-spacing: -0.5px;
         }
-        
-        .section-subtitle {
-            font-size: 1.15rem;
-            color: rgba(255,255,255,0.6);
+        .hero h1 { 
+            font-size: 2.2rem; 
+            font-weight: 700; 
+            line-height: 1.25; 
+            margin-bottom: 1rem;
+        }
+        .hero-statement {
+            font-size: 1.1rem;
+            color: var(--light-gray);
+            margin-bottom: 0.75rem;
             max-width: 600px;
-            margin: 0 auto;
         }
-        
-        .philosophy-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-        
-        .philosophy-card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 20px;
-            padding: 2.5rem;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
-        }
-        
-        .philosophy-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent), var(--electric));
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
-        
-        .philosophy-card:hover {
-            background: rgba(255,255,255,0.05);
-            transform: translateY(-5px);
-            border-color: rgba(0, 229, 160, 0.2);
-        }
-        
-        .philosophy-card:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .philosophy-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, rgba(0, 229, 160, 0.2) 0%, rgba(0, 212, 255, 0.1) 100%);
-            border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .philosophy-card h3 {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        
-        .philosophy-old {
-            color: var(--coral);
+        .hero-location {
             font-size: 0.95rem;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .philosophy-new {
-            color: var(--accent);
-            font-size: 1.1rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .philosophy-desc {
-            color: rgba(255,255,255,0.6);
-            font-size: 0.95rem;
-            margin-top: 1rem;
-            line-height: 1.7;
-        }
-
-        /* Tech Fusion Section */
-        .tech-fusion {
-            padding: 8rem 2rem;
-            background: var(--dark);
-            position: relative;
-        }
-        
-        .tech-fusion-container {
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-        
-        .fusion-showcase {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            margin-top: 4rem;
-        }
-        
-        .fusion-visual {
-            position: relative;
-            padding: 2rem;
-        }
-        
-        .fusion-diagram {
-            position: relative;
-            width: 100%;
-            max-width: 450px;
-            aspect-ratio: 1;
-            margin: 0 auto;
-        }
-        
-        .fusion-center {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 140px;
-            height: 140px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            z-index: 10;
-            box-shadow: 0 0 60px rgba(0, 104, 56, 0.5);
-        }
-        
-        .fusion-center-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.3rem;
-        }
-        
-        .fusion-center-text {
-            font-family: 'Syne', sans-serif;
-            font-weight: 700;
-            font-size: 0.9rem;
-        }
-        
-        .fusion-node {
-            position: absolute;
-            width: 90px;
-            height: 90px;
-            background: var(--dark-surface);
-            border: 2px solid rgba(0, 229, 160, 0.3);
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        
-        .fusion-node:hover {
-            transform: scale(1.1);
-            border-color: var(--accent);
-            box-shadow: 0 10px 40px var(--accent-glow);
-        }
-        
-        .fusion-node-icon { font-size: 1.8rem; margin-bottom: 0.3rem; }
-        .fusion-node-text { font-size: 0.7rem; font-weight: 600; color: rgba(255,255,255,0.8); }
-        
-        .fusion-node:nth-child(2) { top: 5%; left: 50%; transform: translateX(-50%); }
-        .fusion-node:nth-child(3) { top: 25%; right: 5%; }
-        .fusion-node:nth-child(4) { bottom: 25%; right: 5%; }
-        .fusion-node:nth-child(5) { bottom: 5%; left: 50%; transform: translateX(-50%); }
-        .fusion-node:nth-child(6) { bottom: 25%; left: 5%; }
-        .fusion-node:nth-child(7) { top: 25%; left: 5%; }
-        
-        .fusion-line {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 120px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            transform-origin: left center;
-            opacity: 0.4;
-        }
-        
-        .fusion-content h3 {
-            font-family: 'Syne', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            line-height: 1.3;
-        }
-        
-        .fusion-content p {
-            color: rgba(255,255,255,0.7);
-            font-size: 1.1rem;
-            line-height: 1.8;
+            color: var(--gray);
             margin-bottom: 2rem;
         }
-        
-        .fusion-benefits {
-            display: grid;
-            gap: 1rem;
+        .hero-location strong { color: var(--accent); }
+        .hero-buttons { display: flex; flex-wrap: wrap; gap: 1rem; }
+        .btn { 
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.9rem 1.5rem; border-radius: 8px; 
+            font-weight: 600; font-size: 1rem;
+            text-decoration: none; transition: all 0.2s; 
+            border: none; cursor: pointer;
         }
-        
-        .fusion-benefit {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1rem;
-            background: rgba(0, 229, 160, 0.05);
-            border-radius: 12px;
-            border-left: 3px solid var(--accent);
+        .btn-primary { background: var(--accent); color: var(--dark); }
+        .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+        .btn-secondary { background: var(--dark-surface); color: var(--white); border: 1px solid var(--border); }
+        .btn-secondary:hover { border-color: var(--accent); }
+        .btn svg { width: 20px; height: 20px; fill: currentColor; }
+
+        /* Section Header */
+        .section-header { margin-bottom: 2rem; }
+        .section-label { 
+            font-size: 0.8rem; font-weight: 600; 
+            color: var(--accent); text-transform: uppercase; 
+            letter-spacing: 1px; margin-bottom: 0.5rem;
         }
-        
-        .fusion-benefit-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--dark);
+        .section-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .section-desc { color: var(--light-gray); font-size: 1rem; }
+
+        /* Cards Grid */
+        .cards { display: grid; gap: 1rem; }
+        .card {
+            background: var(--dark-surface);
+            border: 1px solid var(--border);
             border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            flex-shrink: 0;
+            padding: 1.5rem;
         }
-        
-        .fusion-benefit-text h4 {
-            font-weight: 600;
-            margin-bottom: 0.3rem;
+        .card-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+        .card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .card p { color: var(--light-gray); font-size: 0.95rem; line-height: 1.5; }
+        .card-link { 
+            display: inline-flex; align-items: center; gap: 0.3rem;
+            color: var(--accent); font-weight: 600; font-size: 0.9rem;
+            text-decoration: none; margin-top: 0.75rem;
         }
-        
-        .fusion-benefit-text p {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.6);
-            margin: 0;
-        }
-
-        /* Value Props Section */
-        .value-props {
-            padding: 8rem 2rem;
-            background: linear-gradient(180deg, var(--dark-surface) 0%, var(--dark) 100%);
-            position: relative;
-        }
-        
-        .value-container {
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-        
-        .value-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 4rem;
-        }
-        
-        .value-card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 24px;
-            padding: 2.5rem;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
-        }
-        
-        .value-card:hover {
-            background: rgba(255,255,255,0.05);
-            transform: translateY(-5px);
-        }
-        
-        .value-card-accent {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.3;
-        }
-        
-        .value-card:nth-child(1) .value-card-accent { background: var(--accent); }
-        .value-card:nth-child(2) .value-card-accent { background: var(--electric); }
-        .value-card:nth-child(3) .value-card-accent { background: var(--gold); }
-        .value-card:nth-child(4) .value-card-accent { background: var(--coral); }
-        
-        .value-number {
-            font-family: 'Syne', sans-serif;
-            font-size: 4rem;
-            font-weight: 800;
-            color: rgba(255,255,255,0.05);
-            position: absolute;
-            top: 1rem;
-            right: 2rem;
-        }
-        
-        .value-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .value-card h3 {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            position: relative;
-        }
-        
-        .value-card p {
-            color: rgba(255,255,255,0.6);
-            line-height: 1.8;
-            position: relative;
-        }
-        
-        .value-stats {
-            display: flex;
-            gap: 2rem;
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            position: relative;
-        }
-        
-        .value-stat {
-            text-align: center;
-        }
-        
-        .value-stat-number {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-        
-        .value-stat-label {
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.5);
-        }
-
-        /* Products Section */
-        .products {
-            padding: 8rem 2rem;
-            background: var(--dark);
-        }
-        
-        .products-container {
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-        
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2.5rem;
-            margin-top: 4rem;
-        }
-        
-        .product-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 24px;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            position: relative;
-        }
-        
-        .product-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(0, 229, 160, 0.3);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-        }
-        
-        .product-image {
-            height: 200px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .product-image::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: 
-                linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.05) 50%, transparent 70%);
-            animation: scan 3s ease-in-out infinite;
-        }
-        
-        .product-icon {
-            font-size: 5rem;
-            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
-        }
-        
-        .product-badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
+        .card-link:hover { text-decoration: underline; }
+        .card-badge {
+            display: inline-block;
             background: var(--accent);
             color: var(--dark);
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            margin-left: 0.5rem;
         }
-        
-        .product-badge.coming {
-            background: var(--gold);
-        }
-        
-        .product-content {
-            padding: 2rem;
-        }
-        
-        .product-title {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-        
-        .product-subtitle {
-            color: var(--accent);
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .product-desc {
-            color: rgba(255,255,255,0.6);
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-        }
-        
-        .product-features {
+        .card-badge.soon { background: #F59E0B; }
+
+        /* Simple List */
+        .simple-list { list-style: none; }
+        .simple-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 1rem;
         }
-        
-        .product-feature {
-            background: rgba(0, 229, 160, 0.1);
-            color: var(--accent);
-            padding: 0.3rem 0.8rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-        
-        .product-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .product-link:hover {
-            gap: 1rem;
-        }
-        
-        .product-link svg {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-        }
+        .simple-list li:last-child { border-bottom: none; }
+        .simple-list .icon { font-size: 1.2rem; flex-shrink: 0; }
+        .simple-list strong { color: var(--white); }
+        .simple-list span { color: var(--light-gray); }
 
-        /* Africa Section */
-        .africa-section {
-            padding: 8rem 2rem;
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--dark) 100%);
-            position: relative;
-            overflow: hidden;
+        /* Proof Section */
+        .proof-grid { display: grid; gap: 1.5rem; }
+        .proof-item {
+            background: var(--dark-surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.5rem;
         }
-        
-        .africa-section::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30z' fill='%23ffffff' fill-opacity='0.02'/%3E%3C/svg%3E");
-            background-size: 60px 60px;
-        }
-        
-        .africa-container {
-            max-width: 1300px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .africa-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        
-        .africa-header .section-title {
-            font-size: 2.8rem;
-        }
-        
-        .africa-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-        }
-        
-        .africa-card {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 16px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        
-        .africa-card:hover {
-            background: rgba(255,255,255,0.1);
-            transform: translateY(-5px);
-        }
-        
-        .africa-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .africa-card h4 {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 700;
+        .proof-item h4 { font-weight: 600; margin-bottom: 0.3rem; }
+        .proof-item p { color: var(--light-gray); font-size: 0.95rem; }
+        .proof-type { 
+            font-size: 0.75rem; color: var(--accent); 
+            text-transform: uppercase; letter-spacing: 0.5px;
             margin-bottom: 0.5rem;
         }
-        
-        .africa-card p {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.7);
-            line-height: 1.6;
-        }
 
-        /* CTA Section */
-        .cta-section {
-            padding: 8rem 2rem;
+        /* Example Box */
+        .example-box {
+            background: rgba(0, 217, 139, 0.05);
+            border: 1px solid rgba(0, 217, 139, 0.2);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .example-label {
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+        .example-box p { font-size: 0.95rem; color: var(--light-gray); }
+        .example-box strong { color: var(--white); }
+
+        /* CTA Block */
+        .cta-block {
+            background: var(--dark-surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        .cta-block p { margin-bottom: 1rem; color: var(--light-gray); }
+
+        /* Contact Form */
+        .contact-section { background: var(--dark-surface); }
+        .contact-grid { display: grid; gap: 2rem; }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { 
+            display: block; font-size: 0.9rem; font-weight: 500; 
+            margin-bottom: 0.4rem; color: var(--light-gray);
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
             background: var(--dark);
-            position: relative;
-            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--white);
+            font-size: 1rem;
+            font-family: inherit;
         }
-        
-        .cta-bg-glow {
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            filter: blur(100px);
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
         }
-        
-        .cta-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            z-index: 1;
+        .form-group textarea { resize: vertical; min-height: 100px; }
+        .form-group select { cursor: pointer; }
+        .contact-info h3 { font-size: 1.2rem; margin-bottom: 1rem; }
+        .contact-item { 
+            display: flex; align-items: center; gap: 0.75rem; 
+            margin-bottom: 1rem; color: var(--light-gray);
         }
-        
-        .cta-title {
-            font-family: 'Syne', sans-serif;
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-        
-        .cta-subtitle {
-            font-size: 1.2rem;
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 2.5rem;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
+        .contact-item a { color: var(--accent); text-decoration: none; }
+        .contact-item a:hover { text-decoration: underline; }
 
         /* Footer */
-        .footer {
-            background: var(--dark-surface);
-            padding: 4rem 2rem 2rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
+        .footer { 
+            padding: 2rem 0; 
+            border-top: 1px solid var(--border);
+            text-align: center;
         }
-        
-        .footer-container {
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-        
-        .footer-top {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-        
-        .footer-brand p {
-            color: rgba(255,255,255,0.6);
-            font-size: 0.95rem;
-            margin-top: 1rem;
-            line-height: 1.7;
-        }
-        
-        .footer-column h4 {
-            font-family: 'Syne', sans-serif;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--white);
-        }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column li {
-            margin-bottom: 0.75rem;
-        }
-        
-        .footer-column a {
-            color: rgba(255,255,255,0.6);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-size: 0.95rem;
-        }
-        
-        .footer-column a:hover {
-            color: var(--accent);
-        }
-        
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-        
-        .footer-copy {
-            color: rgba(255,255,255,0.4);
-            font-size: 0.9rem;
-        }
-        
-        .footer-tagline {
-            color: var(--accent);
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
+        .footer p { color: var(--gray); font-size: 0.9rem; }
+        .footer a { color: var(--accent); text-decoration: none; }
 
         /* WhatsApp Float */
         .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: #25D366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 5px 30px rgba(37, 211, 102, 0.4);
-            z-index: 999;
-            transition: all 0.3s ease;
-            text-decoration: none;
+            position: fixed; bottom: 24px; right: 24px;
+            width: 56px; height: 56px;
+            background: #25D366; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999; text-decoration: none;
+            transition: transform 0.2s;
         }
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 40px rgba(37, 211, 102, 0.5);
-        }
-        .whatsapp-float svg {
-            width: 30px;
-            height: 30px;
-            fill: white;
-        }
+        .whatsapp-float:hover { transform: scale(1.05); }
+        .whatsapp-float svg { width: 28px; height: 28px; fill: white; }
 
         /* Responsive */
-        @media (max-width: 1024px) {
-            .hero-container { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
-            .hero-subtitle { margin-left: auto; margin-right: auto; }
-            .hero-buttons { justify-content: center; }
-            .fusion-showcase { grid-template-columns: 1fr; gap: 3rem; }
-            .value-grid { grid-template-columns: 1fr; }
-            .products-grid { grid-template-columns: 1fr; }
-            .africa-grid { grid-template-columns: repeat(2, 1fr); }
-            .footer-top { grid-template-columns: 1fr 1fr; }
+        @media (min-width: 600px) {
+            .hero h1 { font-size: 2.8rem; }
+            .cards { grid-template-columns: repeat(2, 1fr); }
+            .proof-grid { grid-template-columns: repeat(2, 1fr); }
+            .contact-grid { grid-template-columns: 1.2fr 0.8fr; }
         }
         
-        @media (max-width: 768px) {
-            .nav-links { 
-                display: none; 
-                position: absolute; 
-                top: 100%; 
-                left: 0; 
-                right: 0; 
-                background: var(--dark-surface); 
-                flex-direction: column; 
-                padding: 1.5rem; 
-                gap: 1rem;
-                border-bottom: 1px solid rgba(0, 229, 160, 0.1);
-            }
-            .nav-links.active { display: flex; }
-            .mobile-menu-btn { display: block; }
-            .hero-title { font-size: 2.5rem; }
-            .section-title { font-size: 2rem; }
-            .philosophy-grid { grid-template-columns: 1fr; }
-            .africa-grid { grid-template-columns: 1fr; }
-            .cta-title { font-size: 2rem; }
-            .cta-buttons { flex-direction: column; align-items: center; }
-            .footer-top { grid-template-columns: 1fr; text-align: center; }
-            .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
-            .ai-brain { transform: scale(0.7); }
+        @media (max-width: 599px) {
+            body { font-size: 16px; }
+            .hero { padding: 6rem 0 3rem; }
+            .hero h1 { font-size: 1.8rem; }
+            .section { padding: 3rem 0; }
+            .hero-buttons { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="nav" id="nav">
+    <nav class="nav">
         <div class="nav-container">
             <a href="https://4dcs.co.za" class="nav-logo">
                 <img src="https://4dcs.co.za/images/logo.jpg" alt="4D Climate Solutions">
                 <span class="nav-brand">4D <span>AI</span></span>
             </a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#philosophy">Philosophy</a></li>
-                <li><a href="#fusion">Technology</a></li>
-                <li><a href="#value">Why AI</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#contact" class="nav-cta">Get Started</a></li>
-            </ul>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
-                <span></span><span></span><span></span>
-            </button>
+            <a href="#contact" class="nav-cta">Get in Touch</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero">
-        <div class="hero-grid-bg"></div>
-        <div class="hero-orb hero-orb-1"></div>
-        <div class="hero-orb hero-orb-2"></div>
-        <div class="hero-orb hero-orb-3"></div>
-        
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-eyebrow">4D AI Labs</div>
-                <h1 class="hero-title">
-                    <span class="gradient-text">Intelligence</span><br>
-                    for Africa's <span class="highlight">Tomorrow</span>
-                </h1>
-                <p class="hero-subtitle">
-                    We combine AI with drones, satellites, and local expertise to build solutions that prevent problems before they happen—not just react to them.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">
-                        Start Your AI Journey
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-                    </a>
-                    <a href="#products" class="btn btn-outline">Explore Products</a>
-                </div>
-            </div>
-            
-            <div class="hero-visual">
-                <div class="ai-brain">
-                    <div class="orbit-ring orbit-ring-1"></div>
-                    <div class="orbit-ring orbit-ring-2"></div>
-                    <div class="orbit-ring orbit-ring-3"></div>
-                    
-                    <div class="brain-core">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                    </div>
-                    
-                    <div class="orbit-item" style="animation-delay: 0s;">🛰️</div>
-                    <div class="orbit-item" style="animation-delay: -5s;">🚁</div>
-                    <div class="orbit-item" style="animation-delay: -10s;">📊</div>
-                    <div class="orbit-item" style="animation-delay: -3s;">🌾</div>
-                    <div class="orbit-item" style="animation-delay: -7s;">📱</div>
-                    <div class="orbit-item" style="animation-delay: -12s;">☁️</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Philosophy Section -->
-    <section class="philosophy" id="philosophy">
-        <div class="philosophy-container">
-            <div class="philosophy-header animate-on-scroll">
-                <div class="section-tag">Our Philosophy</div>
-                <h2 class="section-title">A Different Approach to AI</h2>
-                <p class="section-subtitle">We believe AI's true value isn't in doing more—it's in knowing sooner, wasting less, and serving everyone.</p>
-            </div>
-            
-            <div class="philosophy-grid">
-                <div class="philosophy-card animate-on-scroll">
-                    <div class="philosophy-icon">🔮</div>
-                    <h3>Prevention > Reaction</h3>
-                    <div class="philosophy-old">✕ Responding to crop disease after harvest loss</div>
-                    <div class="philosophy-new">✓ Detecting stress signals weeks before visible damage</div>
-                    <p class="philosophy-desc">Early detection of pest invasions, drought stress, and disease outbreaks can save entire seasons. AI sees what human eyes cannot—yet.</p>
-                </div>
-                
-                <div class="philosophy-card animate-on-scroll">
-                    <div class="philosophy-icon">⚖️</div>
-                    <h3>Optimization > Waste</h3>
-                    <div class="philosophy-old">✕ Blanket irrigation based on schedules</div>
-                    <div class="philosophy-new">✓ Precision watering based on actual soil needs</div>
-                    <p class="philosophy-desc">In resource-constrained environments, every drop of water, gram of fertilizer, and hour of labor counts. AI finds the optimal path.</p>
-                </div>
-                
-                <div class="philosophy-card animate-on-scroll">
-                    <div class="philosophy-icon">🌍</div>
-                    <h3>Inclusion > Exclusion</h3>
-                    <div class="philosophy-old">✕ Tech only for large commercial operations</div>
-                    <div class="philosophy-new">✓ Mobile-first AI that works on any phone</div>
-                    <p class="philosophy-desc">Our solutions scale from commercial farms to smallholders. AI should unlock opportunity for the 500M+ smallholder farmers worldwide.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Tech Fusion Section -->
-    <section class="tech-fusion" id="fusion">
-        <div class="tech-fusion-container">
-            <div class="philosophy-header animate-on-scroll">
-                <div class="section-tag">Technology Fusion</div>
-                <h2 class="section-title">AI + Everything</h2>
-                <p class="section-subtitle">AI alone is powerful. AI combined with drones, satellites, and IoT becomes transformative.</p>
-            </div>
-            
-            <div class="fusion-showcase">
-                <div class="fusion-visual animate-on-scroll">
-                    <div class="fusion-diagram">
-                        <div class="fusion-center">
-                            <div class="fusion-center-icon">🧠</div>
-                            <div class="fusion-center-text">4D AI</div>
-                        </div>
-                        <div class="fusion-node">
-                            <div class="fusion-node-icon">🛰️</div>
-                            <div class="fusion-node-text">Satellites</div>
-                        </div>
-                        <div class="fusion-node">
-                            <div class="fusion-node-icon">🚁</div>
-                            <div class="fusion-node-text">Drones</div>
-                        </div>
-                        <div class="fusion-node">
-                            <div class="fusion-node-icon">📡</div>
-                            <div class="fusion-node-text">IoT Sensors</div>
-                        </div>
-                        <div class="fusion-node">
-                            <div class="fusion-node-icon">📱</div>
-                            <div class="fusion-node-text">Mobile</div>
-                        </div>
-                        <div class="fusion-node">
-                            <div class="fusion-node-icon">☁️</div>
-                            <div class="fusion-node-text">Cloud</div>
-                        </div>
-                        <div class="fusion-node">
-                            <div class="fusion-node-icon">🗺️</div>
-                            <div class="fusion-node-text">GIS</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="fusion-content animate-on-scroll">
-                    <h3>Multi-Source Intelligence for Complex Decisions</h3>
-                    <p>Weather changes, soil varies, markets shift, and pest invasions spread—all at once. Traditional analysis can't handle this complexity. Our AI synthesizes data from every source to optimize decisions across multiple variables simultaneously.</p>
-                    
-                    <div class="fusion-benefits">
-                        <div class="fusion-benefit">
-                            <div class="fusion-benefit-icon">🛰️</div>
-                            <div class="fusion-benefit-text">
-                                <h4>Satellite Imagery</h4>
-                                <p>Regional crop health monitoring across thousands of hectares</p>
-                            </div>
-                        </div>
-                        <div class="fusion-benefit">
-                            <div class="fusion-benefit-icon">🚁</div>
-                            <div class="fusion-benefit-text">
-                                <h4>Drone Surveys</h4>
-                                <p>Centimeter-level precision for targeted interventions</p>
-                            </div>
-                        </div>
-                        <div class="fusion-benefit">
-                            <div class="fusion-benefit-icon">📊</div>
-                            <div class="fusion-benefit-text">
-                                <h4>Alternative Data</h4>
-                                <p>Weather, market prices, mobile patterns—often more predictive than traditional metrics</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Value Props Section -->
-    <section class="value-props" id="value">
-        <div class="value-container">
-            <div class="philosophy-header animate-on-scroll">
-                <div class="section-tag">The AI Advantage</div>
-                <h2 class="section-title">Why AI? Why Now?</h2>
-                <p class="section-subtitle">AI isn't just for tech giants. It's the great equalizer—enabling small companies to compete with larger players through superior optimization.</p>
-            </div>
-            
-            <div class="value-grid">
-                <div class="value-card animate-on-scroll">
-                    <div class="value-card-accent"></div>
-                    <div class="value-number">01</div>
-                    <div class="value-icon">⚡</div>
-                    <h3>Automated Speed Wins</h3>
-                    <p>In underserved markets, quick automated decisions create massive competitive advantages. While others deliberate, AI-powered businesses act—approving loans in seconds, detecting fraud in milliseconds, routing deliveries in real-time.</p>
-                    <div class="value-stats">
-                        <div class="value-stat">
-                            <div class="value-stat-number">100x</div>
-                            <div class="value-stat-label">Faster Decisions</div>
-                        </div>
-                        <div class="value-stat">
-                            <div class="value-stat-number">24/7</div>
-                            <div class="value-stat-label">Operation</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="value-card animate-on-scroll">
-                    <div class="value-card-accent"></div>
-                    <div class="value-number">02</div>
-                    <div class="value-icon">🎯</div>
-                    <h3>New Markets Unlocked</h3>
-                    <p>AI can serve populations that were previously unprofitable to reach. Alternative data sources—mobile phone patterns, satellite imagery, social connections—can assess creditworthiness where traditional metrics don't exist.</p>
-                    <div class="value-stats">
-                        <div class="value-stat">
-                            <div class="value-stat-number">2B+</div>
-                            <div class="value-stat-label">Unbanked Adults</div>
-                        </div>
-                        <div class="value-stat">
-                            <div class="value-stat-number">500M</div>
-                            <div class="value-stat-label">Smallholder Farmers</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="value-card animate-on-scroll">
-                    <div class="value-card-accent"></div>
-                    <div class="value-number">03</div>
-                    <div class="value-icon">🌤️</div>
-                    <h3>Weather-Proof Planning</h3>
-                    <p>Industries affected by weather and environmental factors gain predictive superpowers. AI models that correlate historical patterns with outcomes can forecast yields, plan harvests, and hedge risks weeks in advance.</p>
-                    <div class="value-stats">
-                        <div class="value-stat">
-                            <div class="value-stat-number">14</div>
-                            <div class="value-stat-label">Day Forecasts</div>
-                        </div>
-                        <div class="value-stat">
-                            <div class="value-stat-number">85%+</div>
-                            <div class="value-stat-label">Accuracy</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="value-card animate-on-scroll">
-                    <div class="value-card-accent"></div>
-                    <div class="value-number">04</div>
-                    <div class="value-icon">📱</div>
-                    <h3>Mobile-First Reality</h3>
-                    <p>Africa leapfrogged landlines to mobile. The same pattern is happening with AI. Mobile-first AI solutions align perfectly with African technology adoption patterns—no legacy infrastructure required.</p>
-                    <div class="value-stats">
-                        <div class="value-stat">
-                            <div class="value-stat-number">495M</div>
-                            <div class="value-stat-label">African Mobile Users</div>
-                        </div>
-                        <div class="value-stat">
-                            <div class="value-stat-number">50%</div>
-                            <div class="value-stat-label">Smartphone Penetration</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Products Section -->
-    <section class="products" id="products">
-        <div class="products-container">
-            <div class="philosophy-header animate-on-scroll">
-                <div class="section-tag">Our Products</div>
-                <h2 class="section-title">AI Tools in Action</h2>
-                <p class="section-subtitle">Real solutions deployed today, solving real problems for real users.</p>
-            </div>
-            
-            <div class="products-grid">
-                <div class="product-card animate-on-scroll">
-                    <div class="product-image" style="background: linear-gradient(135deg, #1a365d 0%, #2d4a7c 100%);">
-                        <div class="product-badge">Live</div>
-                        <div class="product-icon">📊</div>
-                    </div>
-                    <div class="product-content">
-                        <h3 class="product-title">Lipalo</h3>
-                        <div class="product-subtitle">AI Statistics Assistant</div>
-                        <p class="product-desc">Your intelligent companion for Lesotho data. Ask questions in plain English about population, economy, agriculture, and get instant, accurate answers with source citations.</p>
-                        <div class="product-features">
-                            <span class="product-feature">Natural Language</span>
-                            <span class="product-feature">Cited Sources</span>
-                            <span class="product-feature">Real-time Data</span>
-                        </div>
-                        <a href="https://lipalo.4dcs.co.za" target="_blank" class="product-link">
-                            Try Lipalo
-                            <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="product-card animate-on-scroll">
-                    <div class="product-image" style="background: linear-gradient(135deg, #7b341e 0%, #c05621 100%);">
-                        <div class="product-badge">Live</div>
-                        <div class="product-icon">🚗</div>
-                    </div>
-                    <div class="product-content">
-                        <h3 class="product-title">Traffic Monitor</h3>
-                        <div class="product-subtitle">Maseru Bridge Intelligence</div>
-                        <p class="product-desc">Real-time traffic analysis at the busiest Lesotho-South Africa border crossing. AI-powered camera analysis helps travelers plan crossings and avoid peak congestion.</p>
-                        <div class="product-features">
-                            <span class="product-feature">Live Camera Feed</span>
-                            <span class="product-feature">AI Analysis</span>
-                            <span class="product-feature">Peak Predictions</span>
-                        </div>
-                        <a href="https://traffic.4dcs.co.za" target="_blank" class="product-link">
-                            Check Traffic
-                            <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="product-card animate-on-scroll">
-                    <div class="product-image" style="background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);">
-                        <div class="product-badge coming">Coming Soon</div>
-                        <div class="product-icon">🌾</div>
-                    </div>
-                    <div class="product-content">
-                        <h3 class="product-title">AI Agri-Extension</h3>
-                        <div class="product-subtitle">Smart Farming Advisor</div>
-                        <p class="product-desc">Bringing expert agricultural advice to every farmer's phone. Pest identification, treatment recommendations, market prices, and weather-aware planting calendars—powered by AI.</p>
-                        <div class="product-features">
-                            <span class="product-feature">Pest ID</span>
-                            <span class="product-feature">Voice Interface</span>
-                            <span class="product-feature">Sesotho Support</span>
-                        </div>
-                        <span class="product-link" style="color: var(--gold); cursor: default;">
-                            In Development
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="product-card animate-on-scroll">
-                    <div class="product-image" style="background: linear-gradient(135deg, #553c9a 0%, #805ad5 100%);">
-                        <div class="product-badge coming">Coming Soon</div>
-                        <div class="product-icon">💰</div>
-                    </div>
-                    <div class="product-content">
-                        <h3 class="product-title">Credit Scoring</h3>
-                        <div class="product-subtitle">Alternative Data Platform</div>
-                        <p class="product-desc">Financial inclusion through AI. Using mobile usage patterns, utility payments, and social data to assess creditworthiness for the unbanked and underbanked populations.</p>
-                        <div class="product-features">
-                            <span class="product-feature">Alt-Data</span>
-                            <span class="product-feature">Instant Scoring</span>
-                            <span class="product-feature">API Ready</span>
-                        </div>
-                        <span class="product-link" style="color: var(--gold); cursor: default;">
-                            In Development
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Africa Section -->
-    <section class="africa-section" id="africa">
-        <div class="africa-container">
-            <div class="africa-header animate-on-scroll">
-                <div class="section-tag" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: var(--white);">Built for Africa</div>
-                <h2 class="section-title">Why We're Different</h2>
-                <p class="section-subtitle" style="color: rgba(255,255,255,0.7);">We don't adapt Western solutions for Africa. We build African solutions from the ground up.</p>
-            </div>
-            
-            <div class="africa-grid">
-                <div class="africa-card animate-on-scroll">
-                    <div class="africa-icon">📶</div>
-                    <h4>Offline-First</h4>
-                    <p>Works without internet. Syncs when connected. No lost data.</p>
-                </div>
-                <div class="africa-card animate-on-scroll">
-                    <div class="africa-icon">🗣️</div>
-                    <h4>Local Languages</h4>
-                    <p>Sesotho, Zulu, Arabic interfaces. Voice support coming.</p>
-                </div>
-                <div class="africa-card animate-on-scroll">
-                    <div class="africa-icon">📱</div>
-                    <h4>Low-Bandwidth</h4>
-                    <p>Optimized for 2G/3G. Light on data. Fast on any phone.</p>
-                </div>
-                <div class="africa-card animate-on-scroll">
-                    <div class="africa-icon">💵</div>
-                    <h4>Affordable</h4>
-                    <p>Southern Africa pricing with global quality.</p>
-                </div>
-                <div class="africa-card animate-on-scroll">
-                    <div class="africa-icon">🧪</div>
-                    <h4>Field-Tested</h4>
-                    <p>Every solution tested in real rural conditions.</p>
-                </div>
-                <div class="africa-card animate-on-scroll">
-                    <div class="africa-icon">🤝</div>
-                    <h4>Local Partners</h4>
-                    <p>World Bank, LHDA, NUL, Government of Lesotho.</p>
-                </div>
-                <div class="africa-card animate-on-scroll">
-                    <div class="africa-icon">🌱</div>
-                    <h4>Scalable</h4>
-                    <p>From 1 farm to 10,000. Same platform, same quality.</p>
-                </div>
-                <div class="africa-card animate-on-scroll">
-                    <div class="africa-icon">🔐</div>
-                    <h4>Data Sovereignty</h4>
-                    <p>Your data stays in Africa. Full compliance.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section" id="contact">
-        <div class="cta-bg-glow"></div>
-        <div class="cta-container animate-on-scroll">
-            <h2 class="cta-title">Ready to Build the Future?</h2>
-            <p class="cta-subtitle">Whether you're a startup looking to integrate AI, an NGO wanting to scale impact, or an enterprise ready to transform—let's talk.</p>
-            <div class="cta-buttons">
-                <a href="mailto:ai@4dcs.co.za" class="btn btn-primary">
-                    Start Conversation
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <div class="container">
+            <div class="hero-tagline">4D AI Labs</div>
+            <h1>Practical AI for Lesotho & Southern Africa</h1>
+            <p class="hero-statement">We build AI tools for governments, NGOs, and businesses—designed for low-bandwidth, local languages, and African realities.</p>
+            <p class="hero-location">Based in <strong>Maseru & Bloemfontein</strong>, serving SADC clients with local context and global-grade AI.</p>
+            <div class="hero-buttons">
+                <a href="https://wa.me/27761080024?text=Hi%204D%20AI%2C%20I'd%20like%20to%20discuss%20a%20project." class="btn btn-primary">
+                    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Chat on WhatsApp
                 </a>
-                <a href="https://4dcs.co.za" class="btn btn-outline">Visit 4DCS</a>
+                <a href="#products" class="btn btn-secondary">See Our Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Build -->
+    <section class="section section-border" id="products">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">What We Build</div>
+                <h2 class="section-title">AI Tools That Work Here</h2>
+                <p class="section-desc">Live products and solutions in development for Southern African contexts.</p>
+            </div>
+            
+            <div class="cards">
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <h3>Lipalo <span class="card-badge">Live</span></h3>
+                    <p>Lesotho data assistant. Ask questions about population, economy, and agriculture in plain English—get instant answers with sources.</p>
+                    <a href="https://lipalo.4dcs.co.za" target="_blank" class="card-link">Try Lipalo →</a>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">🚗</div>
+                    <h3>Traffic Monitor <span class="card-badge">Live</span></h3>
+                    <p>Maseru Bridge border crossing analytics. Real-time AI camera analysis helps travelers avoid peak congestion at the busiest Lesotho-SA crossing.</p>
+                    <a href="https://traffic.4dcs.co.za" target="_blank" class="card-link">Check Traffic →</a>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">🌾</div>
+                    <h3>Agri Advisory <span class="card-badge soon">In Dev</span></h3>
+                    <p>Smart farming advice via SMS and WhatsApp. Pest identification, weather alerts, and planting calendars—works on any phone, in Sesotho.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">💳</div>
+                    <h3>Credit Scoring <span class="card-badge soon">In Dev</span></h3>
+                    <p>Alternative credit models for underbanked populations. Uses mobile patterns and utility data where traditional metrics don't exist.</p>
+                </div>
+            </div>
+
+            <div class="example-box">
+                <div class="example-label">Example Result</div>
+                <p><strong>Maseru Bridge Traffic Bot:</strong> Processes ~500 image analyses daily, helping cross-border travelers plan trips and reduce wait times at the busiest Lesotho-South Africa checkpoint.</p>
+            </div>
+
+            <div class="cta-block">
+                <p>Have a similar challenge? Let's discuss how AI can help.</p>
+                <a href="#contact" class="btn btn-primary">Request a 15-min Call</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who We Serve -->
+    <section class="section section-border" id="clients">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Who We Serve</div>
+                <h2 class="section-title">Built for Your Sector</h2>
+            </div>
+            
+            <ul class="simple-list">
+                <li>
+                    <span class="icon">🏛️</span>
+                    <div><strong>Government & Parastatals</strong> <span>— Data dashboards, citizen services, M&E systems</span></div>
+                </li>
+                <li>
+                    <span class="icon">🌍</span>
+                    <div><strong>NGOs & Development Partners</strong> <span>— Field data collection, impact tracking, beneficiary management</span></div>
+                </li>
+                <li>
+                    <span class="icon">🏦</span>
+                    <div><strong>Financial Institutions</strong> <span>— Credit scoring, fraud detection, customer insights</span></div>
+                </li>
+                <li>
+                    <span class="icon">🌾</span>
+                    <div><strong>Agriculture & Agribusiness</strong> <span>— Farm management, supply chain, extension services</span></div>
+                </li>
+                <li>
+                    <span class="icon">🏢</span>
+                    <div><strong>Local Businesses</strong> <span>— Process automation, chatbots, inventory optimization</span></div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Why Built for Here -->
+    <section class="section section-border" id="why">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Why It Works Here</div>
+                <h2 class="section-title">Built for Southern Africa</h2>
+                <p class="section-desc">We don't adapt Western products. We build for local realities from day one.</p>
+            </div>
+            
+            <ul class="simple-list">
+                <li>
+                    <span class="icon">📶</span>
+                    <div><strong>2G/3G Optimized</strong> <span>— Light pages, compressed data, works on slow connections</span></div>
+                </li>
+                <li>
+                    <span class="icon">📴</span>
+                    <div><strong>Offline-First</strong> <span>— Apps work without internet, sync when connected</span></div>
+                </li>
+                <li>
+                    <span class="icon">🗣️</span>
+                    <div><strong>Local Languages</strong> <span>— Sesotho and Zulu interfaces, voice support coming</span></div>
+                </li>
+                <li>
+                    <span class="icon">💵</span>
+                    <div><strong>Regional Pricing</strong> <span>— Southern Africa rates, not Silicon Valley invoices</span></div>
+                </li>
+                <li>
+                    <span class="icon">🧪</span>
+                    <div><strong>Field-Tested</strong> <span>— Every solution tested in real rural conditions</span></div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Proof / Collaborations -->
+    <section class="section section-border" id="proof">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Our Work</div>
+                <h2 class="section-title">Projects & Collaborations</h2>
+            </div>
+            
+            <div class="proof-grid">
+                <div class="proof-item">
+                    <div class="proof-type">Water Sector</div>
+                    <h4>LLWDP II Community Monitoring</h4>
+                    <p>Mobile data collection system for World Bank-funded water project across 4 zones in Lesotho. Offline-capable field surveys.</p>
+                </div>
+                <div class="proof-item">
+                    <div class="proof-type">Agriculture</div>
+                    <h4>SADP II Enterprise Hub</h4>
+                    <p>Service provider management and M&E platform for Lesotho's Smallholder Agriculture Development Project.</p>
+                </div>
+                <div class="proof-item">
+                    <div class="proof-type">Research</div>
+                    <h4>University of Virginia</h4>
+                    <p>AI for agricultural extension research collaboration—developing voice-based farming advisories for low-literacy users.</p>
+                </div>
+                <div class="proof-item">
+                    <div class="proof-type">Public Data</div>
+                    <h4>Lipalo Statistics Assistant</h4>
+                    <p>Natural language interface to Lesotho Bureau of Statistics data. 10K+ queries processed since launch.</p>
+                </div>
+            </div>
+
+            <div class="cta-block">
+                <p>Want to see a demo of any product?</p>
+                <a href="https://wa.me/27761080024?text=Hi%2C%20I'd%20like%20a%20demo%20of%20your%20AI%20products." class="btn btn-primary">Request Demo Video</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Get Started</div>
+                <h2 class="section-title">Let's Discuss Your Project</h2>
+                <p class="section-desc">Tell us about your challenge. We'll respond within 24 hours.</p>
+            </div>
+            
+            <div class="contact-grid">
+                <form action="https://formsubmit.co/info@4dcs.co.za" method="POST">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="org">Organisation</label>
+                        <input type="text" id="org" name="organisation">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">Email or Phone</label>
+                        <input type="text" id="contact" name="contact" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="interest">What are you interested in?</label>
+                        <select id="interest" name="interest">
+                            <option value="">Select an option...</option>
+                            <option value="data-assistant">Data Assistant (like Lipalo)</option>
+                            <option value="traffic-analytics">Traffic / Location Analytics</option>
+                            <option value="agriculture">Agriculture / Extension Services</option>
+                            <option value="credit-models">Credit Scoring / Financial</option>
+                            <option value="custom">Custom AI Solution</option>
+                            <option value="other">Other / Not Sure</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Brief Description</label>
+                        <textarea id="message" name="message" placeholder="Tell us about your challenge or project idea..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+                
+                <div class="contact-info">
+                    <h3>Or reach us directly</h3>
+                    <div class="contact-item">
+                        <span>📱</span>
+                        <a href="https://wa.me/27761080024">WhatsApp: +27 76 108 0024</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>✉️</span>
+                        <a href="mailto:ai@4dcs.co.za">ai@4dcs.co.za</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <span>Maseru, Lesotho<br>Bloemfontein, South Africa</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>🌐</span>
+                        <a href="https://4dcs.co.za">4dcs.co.za</a>
+                    </div>
+                    
+                    <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+                        <p style="color: var(--light-gray); font-size: 0.9rem; margin-bottom: 1rem;">Prefer a quick call?</p>
+                        <a href="https://wa.me/27761080024?text=Hi%2C%20can%20we%20schedule%20a%2015-minute%20call%20about%20an%20AI%20project%3F" class="btn btn-secondary" style="width: 100%;">Book 15-min Call</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-top">
-                <div class="footer-brand">
-                    <a href="https://4dcs.co.za" class="nav-logo">
-                        <img src="https://4dcs.co.za/images/logo.jpg" alt="4D Climate Solutions" style="height: 50px;">
-                    </a>
-                    <p>4D AI Labs is the innovation arm of 4D Climate Solutions, building AI-powered tools for Africa's development challenges.</p>
-                </div>
-                <div class="footer-column">
-                    <h4>Products</h4>
-                    <ul>
-                        <li><a href="https://lipalo.4dcs.co.za">Lipalo</a></li>
-                        <li><a href="https://traffic.4dcs.co.za">Traffic Monitor</a></li>
-                        <li><a href="#">AI Agri-Extension</a></li>
-                        <li><a href="#">Credit Scoring</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="https://4dcs.co.za/about.html">About</a></li>
-                        <li><a href="https://4dcs.co.za/services.html">Services</a></li>
-                        <li><a href="https://4dcs.co.za/blog">Blog</a></li>
-                        <li><a href="https://4dcs.co.za/contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Connect</h4>
-                    <ul>
-                        <li><a href="mailto:ai@4dcs.co.za">ai@4dcs.co.za</a></li>
-                        <li><a href="tel:+27761080024">+27 76 108 0024</a></li>
-                        <li><a href="https://wa.me/27761080024">WhatsApp</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p class="footer-copy">© 2025 4D Climate Solutions (Pty) Ltd. All rights reserved.</p>
-                <p class="footer-tagline">creative • innovative • green • sustainable</p>
-            </div>
+        <div class="container">
+            <p>© 2025 <a href="https://4dcs.co.za">4D Climate Solutions (Pty) Ltd</a>. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; color: var(--accent); font-size: 0.85rem;">creative • innovative • green • sustainable</p>
         </div>
     </footer>
 
     <!-- WhatsApp Float -->
-    <a href="https://wa.me/27761080024?text=Hello%204D%20AI%2C%20I'd%20like%20to%20learn%20more%20about%20your%20AI%20solutions." class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+    <a href="https://wa.me/27761080024?text=Hi%204D%20AI%2C%20I'd%20like%20to%20discuss%20a%20project." class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     </a>
-
-    <script>
-        // Navigation scroll effect
-        const nav = document.getElementById('nav');
-        window.addEventListener('scroll', () => {
-            nav.classList.toggle('scrolled', window.scrollY > 50);
-        });
-
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Animate on scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
-
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    navLinks.classList.remove('active');
-                }
-            });
-        });
-    </script>
 </body>
 </html>
