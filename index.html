@@ -46,8 +46,8 @@
         }
         .nav-container { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
         .nav-logo { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; }
-        .nav-logo img { height: 36px; }
-        .nav-brand { font-weight: 700; font-size: 1.1rem; color: var(--white); }
+        .nav-logo img { height: 44px; }
+        .nav-brand { font-weight: 700; font-size: 1.2rem; color: var(--white); }
         .nav-brand span { color: var(--accent); }
         .nav-cta { 
             background: var(--accent); color: var(--dark); 
@@ -59,19 +59,8 @@
 
         /* Hero */
         .hero { 
-            padding: 7rem 0 4rem; 
+            padding: 6.5rem 0 4rem; 
             background: linear-gradient(180deg, var(--dark) 0%, var(--dark-surface) 100%);
-        }
-        .hero-tagline {
-            display: inline-block;
-            background: rgba(0, 217, 139, 0.1);
-            border: 1px solid rgba(0, 217, 139, 0.3);
-            color: var(--accent);
-            padding: 0.4rem 0.8rem;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
         }
         .hero h1 { 
             font-size: 2.2rem; 
@@ -121,10 +110,16 @@
             background: var(--dark-surface);
             border: 1px solid var(--border);
             border-radius: 10px;
-            padding: 1.5rem;
+            padding: 1.25rem 1.5rem;
         }
-        .card-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
-        .card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+        .card-icon { font-size: 1.4rem; }
+        .card h3 { font-size: 1.1rem; font-weight: 600; margin: 0; }
         .card p { color: var(--light-gray); font-size: 0.95rem; line-height: 1.5; }
         .card-link { 
             display: inline-flex; align-items: center; gap: 0.3rem;
@@ -283,7 +278,7 @@
         <div class="nav-container">
             <a href="https://4dcs.co.za" class="nav-logo">
                 <img src="https://4dcs.co.za/images/logo.jpg" alt="4D Climate Solutions">
-                <span class="nav-brand">4D <span>AI</span></span>
+                <span class="nav-brand">4D <span>AI Labs</span></span>
             </a>
             <a href="#contact" class="nav-cta">Get in Touch</a>
         </div>
@@ -292,7 +287,6 @@
     <!-- Hero -->
     <section class="hero">
         <div class="container">
-            <div class="hero-tagline">4D AI Labs</div>
             <h1>Practical AI for Lesotho & Southern Africa</h1>
             <p class="hero-statement">We build AI tools for governments, NGOs, and businesses—designed for low-bandwidth, local languages, and African realities.</p>
             <p class="hero-location">Based in <strong>Maseru & Bloemfontein</strong>, serving SADC clients with local context and global-grade AI.</p>
@@ -317,28 +311,36 @@
             
             <div class="cards">
                 <div class="card">
-                    <div class="card-icon">📊</div>
-                    <h3>Lipalo <span class="card-badge">Live</span></h3>
+                    <div class="card-header">
+                        <div class="card-icon">📊</div>
+                        <h3>Lipalo <span class="card-badge">Live</span></h3>
+                    </div>
                     <p>Lesotho data assistant. Ask questions about population, economy, and agriculture in plain English—get instant answers with sources.</p>
                     <a href="https://lipalo.4dcs.co.za" target="_blank" class="card-link">Try Lipalo →</a>
                 </div>
                 
                 <div class="card">
-                    <div class="card-icon">🚗</div>
-                    <h3>Traffic Monitor <span class="card-badge">Live</span></h3>
+                    <div class="card-header">
+                        <div class="card-icon">🚗</div>
+                        <h3>Traffic Monitor <span class="card-badge">Live</span></h3>
+                    </div>
                     <p>Maseru Bridge border crossing analytics. Real-time AI camera analysis helps travelers avoid peak congestion at the busiest Lesotho-SA crossing.</p>
                     <a href="https://traffic.4dcs.co.za" target="_blank" class="card-link">Check Traffic →</a>
                 </div>
                 
                 <div class="card">
-                    <div class="card-icon">🌾</div>
-                    <h3>Agri Advisory <span class="card-badge soon">In Dev</span></h3>
+                    <div class="card-header">
+                        <div class="card-icon">🌾</div>
+                        <h3>Agri Advisory <span class="card-badge soon">In Dev</span></h3>
+                    </div>
                     <p>Smart farming advice via SMS and WhatsApp. Pest identification, weather alerts, and planting calendars—works on any phone, in Sesotho.</p>
                 </div>
                 
                 <div class="card">
-                    <div class="card-icon">💳</div>
-                    <h3>Credit Scoring <span class="card-badge soon">In Dev</span></h3>
+                    <div class="card-header">
+                        <div class="card-icon">💳</div>
+                        <h3>Credit Scoring <span class="card-badge soon">In Dev</span></h3>
+                    </div>
                     <p>Alternative credit models for underbanked populations. Uses mobile patterns and utility data where traditional metrics don't exist.</p>
                 </div>
             </div>
