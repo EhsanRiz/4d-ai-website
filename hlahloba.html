@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hlahloba - AI Vehicle Claims Assessment | 4D Climate Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green-primary: #2E7D32;
+            --green-dark: #1B5E20;
+            --green-light: #81C784;
+            --green-pale: #E8F5E9;
+            --blue-primary: #0288D1;
+            --blue-pale: #E3F2FD;
+            --brown: #6D4C41;
+            --brown-pale: #EFEBE9;
+            --text-dark: #1a1a1a;
+            --text-muted: #5a5a5a;
+            --white: #ffffff;
+            --off-white: #fafafa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: var(--off-white);
+            overflow-x: hidden;
+        }
+
+        /* Animated background pattern */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.03;
+            background-image: 
+                radial-gradient(circle at 25% 25%, var(--green-primary) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, var(--blue-primary) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--green-primary);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--green-primary);
+            color: var(--white);
+            box-shadow: 0 4px 14px rgba(46, 125, 50, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--green-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(46, 125, 50, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--green-primary);
+            border: 2px solid var(--green-primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--green-primary);
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-primary) 50%, var(--blue-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .demo-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+            transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+            transition: transform 0.5s ease;
+        }
+
+        .demo-card:hover {
+            transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+        }
+
+        .demo-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .demo-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .demo-dot.red { background: #ff5f57; }
+        .demo-dot.yellow { background: #febc2e; }
+        .demo-dot.green { background: #28c840; }
+
+        .analysis-result {
+            background: var(--green-pale);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .analysis-result h4 {
+            color: var(--green-dark);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .damage-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .damage-tag {
+            background: var(--white);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--green-dark);
+        }
+
+        .cost-estimate {
+            background: var(--blue-pale);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cost-estimate h4 {
+            color: var(--blue-primary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .cost-value {
+            font-family: 'Space Mono', monospace;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .fraud-check {
+            background: var(--brown-pale);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .fraud-check h4 {
+            color: var(--brown);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .status-ok {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--green-primary);
+            font-weight: 600;
+        }
+
+        .check-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--green-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 4rem 2rem;
+            background: var(--white);
+            position: relative;
+            z-index: 1;
+        }
+
+        .stats-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'Space Mono', monospace;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--green-primary);
+            line-height: 1;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Problem Section */
+        .problem-section {
+            padding: 6rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: var(--green-pale);
+            color: var(--green-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .problem-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            border-left: 4px solid transparent;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .problem-card:hover {
+            transform: translateX(10px);
+            border-left-color: var(--green-primary);
+        }
+
+        .problem-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .problem-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .highlight-stat {
+            font-family: 'Space Mono', monospace;
+            color: var(--green-primary);
+            font-weight: 700;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--white) 0%, var(--green-pale) 100%);
+            position: relative;
+            z-index: 1;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .feature-card:nth-child(1) .feature-icon {
+            background: linear-gradient(135deg, var(--green-pale), var(--green-light));
+        }
+
+        .feature-card:nth-child(2) .feature-icon {
+            background: linear-gradient(135deg, var(--blue-pale), #90CAF9);
+        }
+
+        .feature-card:nth-child(3) .feature-icon {
+            background: linear-gradient(135deg, var(--brown-pale), #BCAAA4);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* How It Works */
+        .how-section {
+            padding: 6rem 2rem;
+            background: var(--white);
+            position: relative;
+            z-index: 1;
+        }
+
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        .steps-container::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 80px;
+            right: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--green-primary), var(--blue-primary), var(--brown));
+        }
+
+        .step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            padding: 0 1rem;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: var(--white);
+            border: 3px solid var(--green-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--green-primary);
+            position: relative;
+            z-index: 2;
+        }
+
+        .step:nth-child(2) .step-number { border-color: var(--blue-primary); color: var(--blue-primary); }
+        .step:nth-child(3) .step-number { border-color: var(--brown); color: var(--brown); }
+        .step:nth-child(4) .step-number { border-color: var(--green-dark); color: var(--green-dark); }
+
+        .step h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .step p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-primary) 100%);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-content h2 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .cta-content p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--green-dark);
+        }
+
+        .btn-white:hover {
+            background: var(--off-white);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            background: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            height: 40px;
+            margin-bottom: 1rem;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .footer-tagline {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .demo-card {
+                transform: none;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .problem-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .steps-container::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .stat-value {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-text, .demo-card, .stat-item, .problem-card, .feature-card, .step {
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        .demo-card { animation-delay: 0.2s; }
+        .stat-item:nth-child(1) { animation-delay: 0.1s; }
+        .stat-item:nth-child(2) { animation-delay: 0.2s; }
+        .stat-item:nth-child(3) { animation-delay: 0.3s; }
+        .stat-item:nth-child(4) { animation-delay: 0.4s; }
+        .problem-card:nth-child(1) { animation-delay: 0.1s; }
+        .problem-card:nth-child(2) { animation-delay: 0.2s; }
+        .problem-card:nth-child(3) { animation-delay: 0.3s; }
+        .problem-card:nth-child(4) { animation-delay: 0.4s; }
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .step:nth-child(1) { animation-delay: 0.1s; }
+        .step:nth-child(2) { animation-delay: 0.2s; }
+        .step:nth-child(3) { animation-delay: 0.3s; }
+        .step:nth-child(4) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <div class="bg-pattern"></div>
+
+    <header>
+        <div class="header-content">
+            <img src="https://4dcs.co.za/logo.png" alt="4D Climate Solutions" class="logo" onerror="this.style.display='none'">
+            <nav class="nav-links">
+                <a href="#problem">The Problem</a>
+                <a href="#solution">Solution</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#contact" class="btn btn-primary">Get in Touch</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Hlahloba</h1>
+                <p style="font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; font-style: italic;">"To examine" in Sesotho</p>
+                <p style="font-size: 1.4rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.5rem;">AI-Powered Vehicle Claims Assessment</p>
+                <p>Intelligent damage analysis and fraud detection that transforms how insurers process vehicle claims. Faster. Smarter. More accurate.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Request Demo</a>
+                    <a href="#solution" class="btn btn-outline">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="demo-card">
+                    <div class="demo-header">
+                        <span class="demo-dot red"></span>
+                        <span class="demo-dot yellow"></span>
+                        <span class="demo-dot green"></span>
+                    </div>
+                    <div class="analysis-result">
+                        <h4>Damage Detected</h4>
+                        <div class="damage-items">
+                            <span class="damage-tag">Front bumper dent</span>
+                            <span class="damage-tag">Headlight crack</span>
+                            <span class="damage-tag">Paint scratch</span>
+                        </div>
+                    </div>
+                    <div class="cost-estimate">
+                        <h4>Estimated Repair Cost</h4>
+                        <span class="cost-value">R 18,450</span>
+                    </div>
+                    <div class="fraud-check">
+                        <h4>Fraud Check</h4>
+                        <div class="status-ok">
+                            <span class="check-icon">✓</span>
+                            No anomalies detected
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-value">R7B</div>
+                <div class="stat-label">Annual fraud cost in SA</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">3-7</div>
+                <div class="stat-label">Days for manual assessment</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">&lt;5</div>
+                <div class="stat-label">Minutes with AI</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">95%</div>
+                <div class="stat-label">Damage detection accuracy</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="problem-section" id="problem">
+        <div class="section-content">
+            <span class="section-tag">The Challenge</span>
+            <h2>Vehicle Claims Processing is Broken</h2>
+            <p>Insurance companies across Southern Africa face mounting challenges with traditional claims assessment methods.</p>
+            
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <h3>Slow Processing</h3>
+                    <p>Manual assessments take <span class="highlight-stat">3-7 days</span> on average, frustrating policyholders and delaying settlements.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>Inconsistent Results</h3>
+                    <p>Different assessors produce different estimates for the same damage, leading to disputes and inefficiency.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>Expensive Experts</h3>
+                    <p>Skilled assessors are costly and in short supply, especially for high-volume, straightforward claims.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>Fraud Vulnerability</h3>
+                    <p>Manual review misses sophisticated fraud patterns - recycled photos, staged damage, inflated estimates.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section" id="solution">
+        <div class="section-content">
+            <span class="section-tag">Our Solution</span>
+            <h2>Hlahloba</h2>
+            <p>Three powerful capabilities in one intelligent platform.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Damage Detection</h3>
+                    <p>AI vision models identify and categorize damage types: dents, scratches, broken glass, structural damage, and paint damage with precision.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Cost Estimation</h3>
+                    <p>Automated repair cost estimates based on damage severity, affected parts, and real-time local parts and labour pricing.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Fraud Detection</h3>
+                    <p>AI-powered anomaly detection flags suspicious claims: metadata inconsistencies, duplicate images, damage-cost mismatches.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-section" id="how-it-works">
+        <div class="section-content">
+            <span class="section-tag">Process</span>
+            <h2>How It Works</h2>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Upload</h4>
+                    <p>Photos uploaded via web portal or mobile app</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Analyse</h4>
+                    <p>AI examines damage and validates metadata</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Estimate</h4>
+                    <p>Repair costs calculated from regional data</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Report</h4>
+                    <p>Comprehensive assessment delivered instantly</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="contact">
+        <div class="cta-content">
+            <h2>Ready to Transform Your Claims Process?</h2>
+            <p>Let's discuss how Hlahloba can work for your organization. We'll build a proof of concept tailored to your specific needs.</p>
+            <div class="cta-buttons">
+                <a href="mailto:ehsan.rizvi@4dclimatesolutions.com" class="btn btn-white">Contact Us</a>
+                <a href="https://4dcs.co.za" class="btn btn-outline" style="border-color: white; color: white;">Visit 4DCS.co.za</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://4dcs.co.za">4dcs.co.za</a>
+                <a href="https://ai.4dcs.co.za">ai.4dcs.co.za</a>
+                <a href="mailto:ehsan.rizvi@4dclimatesolutions.com">ehsan.rizvi@4dclimatesolutions.com</a>
+            </div>
+            <p class="footer-tagline">4D Climate Solutions (Pty) Ltd | Maseru, Lesotho<br>creative • innovative • green • sustainable</p>
+        </div>
+    </footer>
+</body>
+</html>
