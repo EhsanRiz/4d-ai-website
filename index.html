@@ -3,200 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>4D AI Labs | Practical AI for Lesotho & Southern Africa</title>
-    <meta name="description" content="We build practical AI tools for governments, NGOs and businesses in Lesotho and South Africa. Offline-first, Sesotho support, local pricing.">
+    <title>4D AI | Practical AI for Lesotho & Southern Africa — 4D Climate Solutions</title>
+    <meta name="description" content="The AI division of 4D Climate Solutions. We build practical AI tools for governments, NGOs and businesses in Lesotho and Southern Africa. Offline-first, Sesotho support, local pricing.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #006838;
-            --primary-dark: #004d29;
-            --accent: #00D98B;
-            --accent-dim: rgba(0, 217, 139, 0.1);
-            --dark: #0F172A;
-            --dark-surface: #1E293B;
-            --gray: #64748B;
-            --light-gray: #94A3B8;
+            --brand: #009A44;
+            --brand-dark: #00672E;
+            --brand-deep: #054D26;
+            --blue: #29ABE2;
+            --blue-dark: #1580B0;
+            --lime: #A6C43C;
+            --lime-dark: #7D9427;
+            --taupe: #8B7D74;
+            --ink: #2B3138;
+            --ink-2: #4F586B;
+            --ink-3: #707A85;
+            --line: #DDE4E0;
+            --tint: #F2F8F4;
+            --tint-blue: #EEF7FC;
             --white: #FFFFFF;
-            --border: #334155;
             --whatsapp: #25D366;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--white); line-height: 1.6; background: var(--dark); font-size: 17px; }
-        .container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem; }
+        body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--ink); line-height: 1.6; background: var(--white); font-size: 17px; }
+        .container { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
         .section { padding: 4rem 0; }
-        .section-border { border-top: 1px solid var(--border); }
-        
-        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0.9rem 1.5rem; background: rgba(15, 23, 42, 0.97); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
-        .nav-container { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .section-border { border-top: 1px solid var(--line); }
+
+        .tri { display: flex; height: 5px; width: 120px; border-radius: 3px; overflow: hidden; margin-top: 0.6rem; }
+        .tri i { flex: 1; }
+        .tri i:nth-child(1) { background: var(--brand); }
+        .tri i:nth-child(2) { background: var(--blue); }
+        .tri i:nth-child(3) { background: var(--lime); }
+
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0.7rem 1.5rem; background: rgba(255, 255, 255, 0.97); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+        .nav-container { max-width: 960px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
         .nav-logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
-        .nav-logo img { height: 44px; }
-        .nav-brand { font-weight: 700; font-size: 1.2rem; color: var(--white); }
-        .nav-brand span { color: var(--accent); }
+        .nav-logo img { height: 40px; }
+        .nav-brand { font-weight: 700; font-size: 1.15rem; color: var(--ink); }
+        .nav-brand span { color: var(--brand); }
+        .nav-links { display: flex; gap: 1.4rem; align-items: center; }
+        .nav-link { color: var(--ink-2); text-decoration: none; font-size: 0.92rem; font-weight: 500; }
+        .nav-link:hover { color: var(--brand); }
         .nav-cta { background: var(--whatsapp); color: var(--white); padding: 0.55rem 1.1rem; border-radius: 6px; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: all 0.2s; display: flex; align-items: center; gap: 0.4rem; }
         .nav-cta:hover { opacity: 0.9; }
         .nav-cta svg { width: 18px; height: 18px; fill: currentColor; }
 
-        .hero { padding: 6.5rem 0 3.5rem; background: linear-gradient(180deg, var(--dark) 0%, var(--dark-surface) 100%); }
-        .hero h1 { font-size: 2.3rem; font-weight: 700; line-height: 1.2; margin-bottom: 1rem; }
-        .hero-statement { font-size: 1.1rem; color: var(--light-gray); margin-bottom: 0.5rem; max-width: 580px; }
-        .hero-location { font-size: 0.95rem; color: var(--gray); margin-bottom: 1.75rem; }
-        .hero-location strong { color: var(--accent); }
+        .hero { padding: 7rem 0 3.5rem; background: linear-gradient(180deg, var(--tint) 0%, var(--white) 100%); }
+        .hero-kicker { font-size: 0.8rem; font-weight: 700; color: var(--blue-dark); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.75rem; }
+        .hero h1 { font-size: 2.4rem; font-weight: 700; line-height: 1.18; margin-bottom: 1rem; color: var(--ink); }
+        .hero h1 .g { color: var(--brand); }
+        .hero-statement { font-size: 1.1rem; color: var(--ink-2); margin-bottom: 0.5rem; max-width: 600px; }
+        .hero-location { font-size: 0.95rem; color: var(--ink-3); margin-bottom: 1.75rem; }
+        .hero-location strong { color: var(--brand-dark); }
         .hero-buttons { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2.5rem; }
-        
+
         .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.4rem; border-radius: 8px; font-weight: 600; font-size: 1rem; text-decoration: none; transition: all 0.2s; border: none; cursor: pointer; }
         .btn-whatsapp { background: var(--whatsapp); color: var(--white); }
         .btn-whatsapp:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); }
-        .btn-secondary { background: var(--dark-surface); color: var(--white); border: 1px solid var(--border); }
-        .btn-secondary:hover { border-color: var(--accent); }
-        .btn-accent { background: var(--accent); color: var(--dark); }
-        .btn-accent:hover { opacity: 0.9; }
+        .btn-secondary { background: var(--white); color: var(--brand-dark); border: 1.5px solid var(--brand); }
+        .btn-secondary:hover { background: var(--tint); }
+        .btn-accent { background: var(--brand); color: var(--white); }
+        .btn-accent:hover { background: var(--brand-dark); }
         .btn svg { width: 20px; height: 20px; fill: currentColor; }
 
-        .stats-bar { display: flex; flex-wrap: wrap; gap: 1.5rem; padding: 1.25rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-        .stat-item { display: flex; align-items: baseline; gap: 0.4rem; }
-        .stat-number { font-size: 1.5rem; font-weight: 700; color: var(--accent); }
-        .stat-label { font-size: 0.9rem; color: var(--light-gray); }
+        .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
+        .stat-item { background: var(--white); border: 1px solid var(--line); border-top: 4px solid var(--brand); border-radius: 8px; padding: 0.9rem 1rem; }
+        .stat-item:nth-child(even) { border-top-color: var(--blue); }
+        .stat-number { display: block; font-size: 1.5rem; font-weight: 700; color: var(--brand-dark); }
+        .stat-item:nth-child(even) .stat-number { color: var(--blue-dark); }
+        .stat-label { font-size: 0.82rem; color: var(--ink-3); }
 
-        .trust-bar { padding: 2rem 0; text-align: center; }
-        .trust-label { font-size: 0.8rem; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
-        .trust-logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
-        .trust-logo { background: var(--dark-surface); border: 1px solid var(--border); padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.85rem; color: var(--light-gray); font-weight: 500; }
+        .trust-bar { padding: 2rem 0; text-align: center; border-top: 1px solid var(--line); }
+        .trust-label { font-size: 0.78rem; color: var(--ink-3); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1rem; }
+        .trust-logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; }
+        .trust-logo { background: var(--tint); border: 1px solid var(--line); padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.85rem; color: var(--ink-2); font-weight: 500; }
 
         .section-header { margin-bottom: 1.75rem; }
-        .section-label { font-size: 0.8rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.4rem; }
-        .section-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.4rem; }
-        .section-desc { color: var(--light-gray); font-size: 1rem; }
+        .section-label { font-size: 0.78rem; font-weight: 700; color: var(--blue-dark); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.4rem; }
+        .section-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--brand-dark); }
+        .section-desc { color: var(--ink-2); font-size: 1rem; }
 
         .products-grid { display: grid; gap: 1rem; }
-        .product-card { background: var(--dark-surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: all 0.2s; }
-        .product-card:hover { border-color: rgba(0, 217, 139, 0.3); }
+        .product-card { background: var(--white); border: 1px solid var(--line); border-left: 4px solid var(--brand); border-radius: 10px; overflow: hidden; transition: all 0.2s; }
+        .product-card:hover { box-shadow: 0 4px 16px rgba(0, 103, 46, 0.08); }
         .product-main { padding: 1.25rem 1.5rem; }
         .product-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.6rem; }
         .product-icon { font-size: 1.4rem; }
-        .product-title { font-size: 1.1rem; font-weight: 600; margin: 0; }
-        .product-badge { display: inline-block; background: var(--accent); color: var(--dark); padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; margin-left: 0.5rem; }
-        .product-badge.soon { background: #F59E0B; }
-        .product-desc { color: var(--light-gray); font-size: 0.95rem; line-height: 1.5; margin-bottom: 0.75rem; }
-        .product-stats { display: flex; gap: 1.25rem; margin-bottom: 0.75rem; }
-        .product-stat { font-size: 0.85rem; color: var(--gray); }
-        .product-stat strong { color: var(--white); font-weight: 600; }
-        .product-link { display: inline-flex; align-items: center; gap: 0.3rem; color: var(--accent); font-weight: 600; font-size: 0.9rem; text-decoration: none; }
+        .product-title { font-size: 1.1rem; font-weight: 700; margin: 0; color: var(--ink); }
+        .product-badge { display: inline-block; background: #E0F3E8; color: var(--brand-dark); padding: 0.15rem 0.55rem; border-radius: 4px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; margin-left: 0.5rem; letter-spacing: 0.5px; }
+        .product-badge.soon { background: #FDF2E3; color: #B45309; }
+        .product-badge.res { background: var(--tint-blue); color: var(--blue-dark); }
+        .product-desc { color: var(--ink-2); font-size: 0.95rem; line-height: 1.5; margin-bottom: 0.75rem; }
+        .product-stats { display: flex; flex-wrap: wrap; gap: 1.25rem; margin-bottom: 0.75rem; }
+        .product-stat { font-size: 0.85rem; color: var(--ink-3); }
+        .product-stat strong { color: var(--brand-dark); font-weight: 700; }
+        .product-link { display: inline-flex; align-items: center; gap: 0.3rem; color: var(--brand); font-weight: 600; font-size: 0.9rem; text-decoration: none; }
         .product-link:hover { text-decoration: underline; }
-        
-        .product-demo { background: #0B1120; border-top: 1px solid var(--border); padding: 1rem 1.5rem; }
-        .demo-label { font-size: 0.7rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.5rem; }
-        .demo-conversation { font-size: 0.9rem; }
-        .demo-q { color: var(--light-gray); margin-bottom: 0.4rem; }
-        .demo-q::before { content: "Q: "; color: var(--accent); font-weight: 600; }
-        .demo-a { color: var(--white); background: rgba(0, 217, 139, 0.1); padding: 0.5rem 0.75rem; border-radius: 6px; border-left: 3px solid var(--accent); }
-        .demo-a::before { content: "→ "; color: var(--accent); }
 
-        .difference-block { background: var(--dark-surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-top: 1.5rem; }
-        .difference-header { padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); font-weight: 600; }
+        .product-demo { background: var(--tint); border-top: 1px solid var(--line); padding: 1rem 1.5rem; }
+        .demo-label { font-size: 0.7rem; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.5rem; }
+        .demo-conversation { font-size: 0.9rem; }
+        .demo-q { color: var(--ink-2); margin-bottom: 0.4rem; }
+        .demo-q::before { content: "Q: "; color: var(--brand); font-weight: 700; }
+        .demo-a { color: var(--ink); background: var(--white); padding: 0.5rem 0.75rem; border-radius: 6px; border-left: 3px solid var(--brand); }
+        .demo-a::before { content: "→ "; color: var(--brand); }
+
+        .research-block { background: var(--blue-dark); border-radius: 12px; padding: 1.75rem 2rem; margin-top: 2.5rem; color: var(--white); }
+        .research-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #9FDCF5; margin-bottom: 0.5rem; }
+        .research-block h3 { font-size: 1.25rem; margin-bottom: 0.6rem; }
+        .research-block p { color: #DCF0FA; font-size: 0.95rem; line-height: 1.6; }
+        .research-meta { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 0.9rem; font-size: 0.85rem; color: #C9E9F8; }
+        .research-meta strong { color: var(--white); }
+
+        .difference-block { background: var(--white); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin-top: 1.5rem; }
+        .difference-header { padding: 1rem 1.5rem; border-bottom: 1px solid var(--line); font-weight: 700; color: var(--brand-dark); }
         .difference-content { display: grid; grid-template-columns: 1fr 1fr; }
         .difference-side { padding: 1.25rem 1.5rem; }
-        .difference-side.before { background: rgba(239, 68, 68, 0.05); border-right: 1px solid var(--border); }
-        .difference-side.after { background: rgba(0, 217, 139, 0.05); }
-        .difference-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.5rem; font-weight: 600; }
-        .difference-side.before .difference-label { color: #EF4444; }
-        .difference-side.after .difference-label { color: var(--accent); }
-        .difference-side p { font-size: 0.95rem; color: var(--light-gray); }
-        .difference-side.after p { color: var(--white); }
+        .difference-side.before { background: #FBF3F2; border-right: 1px solid var(--line); }
+        .difference-side.after { background: var(--tint); }
+        .difference-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.5rem; font-weight: 700; }
+        .difference-side.before .difference-label { color: #C0392B; }
+        .difference-side.after .difference-label { color: var(--brand-dark); }
+        .difference-side p { font-size: 0.95rem; color: var(--ink-2); }
 
         .simple-list { list-style: none; }
-        .simple-list li { padding: 0.7rem 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.95rem; }
+        .simple-list li { padding: 0.7rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.95rem; color: var(--ink-2); }
         .simple-list li:last-child { border-bottom: none; }
         .simple-list .icon { font-size: 1.1rem; flex-shrink: 0; }
-        .simple-list strong { color: var(--white); }
-        .simple-list span { color: var(--light-gray); }
+        .simple-list strong { color: var(--ink); }
 
         .sectors-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
-        .sector-card { background: var(--dark-surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; transition: all 0.2s; }
-        .sector-card:hover { border-color: rgba(0, 217, 139, 0.3); background: rgba(0, 217, 139, 0.03); }
+        .sector-card { background: var(--white); border: 1px solid var(--line); border-top: 4px solid var(--brand); border-radius: 10px; padding: 1.25rem; transition: all 0.2s; }
+        .sector-card:nth-child(3n+2) { border-top-color: var(--blue); }
+        .sector-card:nth-child(3n) { border-top-color: var(--lime); }
+        .sector-card:hover { box-shadow: 0 4px 16px rgba(0, 103, 46, 0.08); }
         .sector-header { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.4rem; }
         .sector-icon { font-size: 1.3rem; }
-        .sector-card h4 { font-size: 1rem; font-weight: 600; margin: 0; }
-        .sector-card p { font-size: 0.85rem; color: var(--light-gray); line-height: 1.4; }
+        .sector-card h4 { font-size: 1rem; font-weight: 700; margin: 0; color: var(--ink); }
+        .sector-card p { font-size: 0.85rem; color: var(--ink-2); line-height: 1.4; }
 
         .proof-grid { display: grid; gap: 1rem; }
-        .proof-item { background: var(--dark-surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem 1.5rem; }
-        .proof-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.4rem; }
-        .proof-type { font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px; background: var(--accent-dim); padding: 0.2rem 0.5rem; border-radius: 4px; }
-        .proof-item h4 { font-weight: 600; margin-bottom: 0.3rem; }
-        .proof-item p { color: var(--light-gray); font-size: 0.9rem; line-height: 1.5; }
-        .proof-metric { margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border); font-size: 0.85rem; }
-        .proof-metric strong { color: var(--accent); font-weight: 700; }
+        .proof-item { background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 1.25rem 1.5rem; }
+        .proof-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.4rem; gap: 0.5rem; }
+        .proof-type { font-size: 0.68rem; color: var(--blue-dark); text-transform: uppercase; letter-spacing: 0.5px; background: var(--tint-blue); padding: 0.2rem 0.5rem; border-radius: 4px; white-space: nowrap; }
+        .proof-item h4 { font-weight: 700; margin-bottom: 0.3rem; color: var(--ink); }
+        .proof-item p { color: var(--ink-2); font-size: 0.9rem; line-height: 1.5; }
+        .proof-metric { margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--line); font-size: 0.85rem; color: var(--ink-3); }
+        .proof-metric strong { color: var(--brand-dark); font-weight: 700; }
 
-        .cta-block { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--dark-surface) 100%); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; text-align: center; margin-top: 2rem; }
+        .cta-block { background: var(--brand-dark); border-radius: 12px; padding: 2rem; text-align: center; margin-top: 2rem; color: var(--white); }
         .cta-block h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
-        .cta-block p { margin-bottom: 1.25rem; color: var(--light-gray); font-size: 0.95rem; }
+        .cta-block p { margin-bottom: 1.25rem; color: #DCEFE3; font-size: 0.95rem; }
 
-        .contact-section { background: var(--dark-surface); }
+        .contact-section { background: var(--tint); }
         .contact-grid { display: grid; gap: 2rem; }
-        .contact-primary { background: var(--dark); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; text-align: center; }
-        .contact-primary h3 { font-size: 1.3rem; margin-bottom: 0.75rem; }
-        .contact-primary p { color: var(--light-gray); margin-bottom: 1.5rem; font-size: 0.95rem; }
+        .contact-primary { background: var(--white); border: 1px solid var(--line); border-top: 4px solid var(--brand); border-radius: 12px; padding: 2rem; text-align: center; }
+        .contact-primary h3 { font-size: 1.3rem; margin-bottom: 0.75rem; color: var(--brand-dark); }
+        .contact-primary p { color: var(--ink-2); margin-bottom: 1.5rem; font-size: 0.95rem; }
         .contact-primary .btn { width: 100%; max-width: 300px; justify-content: center; font-size: 1.05rem; padding: 1rem 1.5rem; }
-        .contact-alternative { text-align: center; padding-top: 1.5rem; border-top: 1px solid var(--border); margin-top: 1.5rem; }
-        .contact-alternative p { color: var(--gray); font-size: 0.9rem; margin-bottom: 1rem; }
+        .contact-alternative { text-align: center; padding-top: 1.5rem; border-top: 1px solid var(--line); margin-top: 1.5rem; }
+        .contact-alternative p { color: var(--ink-3); font-size: 0.9rem; margin-bottom: 1rem; }
         .contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
-        .contact-link { color: var(--light-gray); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem; }
-        .contact-link:hover { color: var(--accent); }
-        
-        .contact-form { background: var(--dark); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; }
-        .contact-form h3 { font-size: 1.1rem; margin-bottom: 1rem; }
+        .contact-link { color: var(--ink-2); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem; }
+        .contact-link:hover { color: var(--brand); }
+
+        .contact-form { background: var(--white); border: 1px solid var(--line); border-top: 4px solid var(--blue); border-radius: 12px; padding: 1.5rem; }
+        .contact-form h3 { font-size: 1.1rem; margin-bottom: 1rem; color: var(--blue-dark); }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
         .form-group { margin-bottom: 0.75rem; }
         .form-group.full { grid-column: span 2; }
-        .form-group label { display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 0.3rem; color: var(--light-gray); }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.7rem 0.9rem; background: var(--dark-surface); border: 1px solid var(--border); border-radius: 6px; color: var(--white); font-size: 0.95rem; font-family: inherit; }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--accent); }
+        .form-group label { display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 0.3rem; color: var(--ink-2); }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.7rem 0.9rem; background: var(--white); border: 1px solid var(--line); border-radius: 6px; color: var(--ink); font-size: 0.95rem; font-family: inherit; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--brand); }
         .form-group textarea { resize: vertical; min-height: 80px; }
         .form-group select { cursor: pointer; }
 
-        .footer { padding: 2rem 0; border-top: 1px solid var(--border); text-align: center; }
-        .footer p { color: var(--gray); font-size: 0.85rem; }
-        .footer a { color: var(--accent); text-decoration: none; }
-        .footer-tagline { color: var(--accent); margin-top: 0.3rem; font-size: 0.8rem; }
+        .footer { padding: 2rem 0 2.5rem; border-top: 1px solid var(--line); text-align: center; }
+        .footer img { height: 44px; margin-bottom: 0.6rem; }
+        .footer p { color: var(--ink-3); font-size: 0.85rem; }
+        .footer a { color: var(--brand); text-decoration: none; }
+        .footer-tagline { color: var(--brand); margin-top: 0.3rem; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+        .footer .bar { display: flex; height: 4px; width: 120px; border-radius: 2px; overflow: hidden; margin: 0 auto 1.25rem; }
+        .footer .bar i { flex: 1; }
+        .footer .bar i:nth-child(1) { background: var(--brand); }
+        .footer .bar i:nth-child(2) { background: var(--blue); }
+        .footer .bar i:nth-child(3) { background: var(--lime); }
 
-        .sticky-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: rgba(15, 23, 42, 0.97); backdrop-filter: blur(10px); border-top: 1px solid var(--border); padding: 0.75rem 1rem; z-index: 999; }
+        .sticky-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.97); backdrop-filter: blur(10px); border-top: 1px solid var(--line); padding: 0.75rem 1rem; z-index: 999; }
         .sticky-cta .btn { width: 100%; justify-content: center; }
 
         /* Success Modal */
-        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; z-index: 9999; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(43, 49, 56, 0.5); display: flex; align-items: center; justify-content: center; z-index: 9999; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
         .modal-overlay.active { opacity: 1; visibility: visible; }
-        .modal-content { background: var(--dark-surface); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; text-align: center; max-width: 320px; transform: scale(0.9); transition: transform 0.3s ease; }
+        .modal-content { background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 2.5rem; text-align: center; max-width: 320px; transform: scale(0.9); transition: transform 0.3s ease; }
         .modal-overlay.active .modal-content { transform: scale(1); }
-        .modal-icon { width: 60px; height: 60px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.8rem; color: var(--dark); }
-        .modal-content h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
-        .modal-content p { color: var(--light-gray); font-size: 0.95rem; }
+        .modal-icon { width: 60px; height: 60px; background: var(--brand); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.8rem; color: var(--white); }
+        .modal-content h3 { font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--ink); }
+        .modal-content p { color: var(--ink-2); font-size: 0.95rem; }
 
         @media (min-width: 640px) {
             .proof-grid { grid-template-columns: repeat(2, 1fr); }
             .contact-grid { grid-template-columns: 1fr 1fr; }
             .sectors-grid { grid-template-columns: repeat(3, 1fr); }
         }
+        @media (max-width: 767px) {
+            .nav-links .nav-link { display: none; }
+        }
         @media (max-width: 639px) {
             body { font-size: 16px; }
-            .hero { padding: 6rem 0 3rem; }
+            .hero { padding: 6.5rem 0 3rem; }
             .hero h1 { font-size: 1.9rem; }
             .section { padding: 3rem 0; }
             .section-title { font-size: 1.35rem; }
             .hero-buttons { flex-direction: column; }
             .btn { width: 100%; justify-content: center; }
-            .stats-bar { gap: 1rem; }
-            .stat-item { flex: 1 1 45%; }
+            .stats-bar { grid-template-columns: 1fr 1fr; }
             .difference-content { grid-template-columns: 1fr; }
-            .difference-side.before { border-right: none; border-bottom: 1px solid var(--border); }
+            .difference-side.before { border-right: none; border-bottom: 1px solid var(--line); }
             .sectors-grid { grid-template-columns: 1fr; }
             .form-row { grid-template-columns: 1fr; }
             .form-group.full { grid-column: span 1; }
             .contact-grid { grid-template-columns: 1fr; }
             .sticky-cta { display: block; }
-            .footer { padding-bottom: 5rem; }
+            .footer { padding-bottom: 5.5rem; }
         }
     </style>
 </head>
@@ -204,33 +238,39 @@
     <nav class="nav">
         <div class="nav-container">
             <a href="https://4dcs.co.za" class="nav-logo">
-                <img src="https://4dcs.co.za/images/logo.jpg" alt="4D Climate Solutions">
-                <span class="nav-brand">4D <span>AI Labs</span></span>
+                <img src="assets/logo-4d.png" alt="4D Climate Solutions">
+                <span class="nav-brand">4D <span>AI</span></span>
             </a>
-            <a href="https://wa.me/27761080024?text=Hi%204D%20AI%2C%20I%27d%20like%20to%20discuss%20a%20project." class="nav-cta">
-                <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                Chat
-            </a>
+            <div class="nav-links">
+                <a href="#products" class="nav-link">Products</a>
+                <a href="#sectors" class="nav-link">Sectors</a>
+                <a href="#work" class="nav-link">Track Record</a>
+                <a href="https://wa.me/26656300091?text=Hi%204D%20AI%2C%20I%27d%20like%20to%20discuss%20a%20project." class="nav-cta">
+                    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Chat
+                </a>
+            </div>
         </div>
     </nav>
 
     <section class="hero">
         <div class="container">
-            <h1>Practical AI for Lesotho & Southern Africa</h1>
-            <p class="hero-statement">We build AI tools for governments, NGOs, and businesses—designed for low-bandwidth, local languages, and African realities.</p>
-            <p class="hero-location">Based in <strong>Maseru & Bloemfontein</strong>, serving SADC clients with local context and global-grade AI.</p>
+            <div class="hero-kicker">The AI division of 4D Climate Solutions</div>
+            <h1>Practical AI for <span class="g">Lesotho &amp; Southern Africa</span></h1>
+            <p class="hero-statement">We build AI tools for governments, NGOs, and businesses — designed for low-bandwidth, local languages, and African realities.</p>
+            <p class="hero-location">Based in <strong>Maseru &amp; Bloemfontein</strong>, serving SADC clients with local context and global-grade AI.</p>
             <div class="hero-buttons">
-                <a href="https://wa.me/27761080024?text=Hi%204D%20AI%2C%20I%27d%20like%20to%20discuss%20a%20project." class="btn btn-whatsapp">
+                <a href="https://wa.me/26656300091?text=Hi%204D%20AI%2C%20I%27d%20like%20to%20discuss%20a%20project." class="btn btn-whatsapp">
                     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                     Discuss Your Project
                 </a>
                 <a href="#products" class="btn btn-secondary">See Live Products</a>
             </div>
             <div class="stats-bar">
-                <div class="stat-item"><span class="stat-number">3</span><span class="stat-label">Live Products</span></div>
+                <div class="stat-item"><span class="stat-number">12+</span><span class="stat-label">Digital Apps Built</span></div>
                 <div class="stat-item"><span class="stat-number">50K+</span><span class="stat-label">AI Queries Processed</span></div>
-                <div class="stat-item"><span class="stat-number">8</span><span class="stat-label">Districts Served</span></div>
-                <div class="stat-item"><span class="stat-number">5+</span><span class="stat-label">Years in Lesotho</span></div>
+                <div class="stat-item"><span class="stat-number">10</span><span class="stat-label">Districts Served</span></div>
+                <div class="stat-item"><span class="stat-number">7+</span><span class="stat-label">Years in Lesotho</span></div>
             </div>
         </div>
     </section>
@@ -254,26 +294,28 @@
             <div class="section-header">
                 <div class="section-label">Live Products</div>
                 <h2 class="section-title">AI Tools You Can Try Today</h2>
+                <div class="tri"><i></i><i></i><i></i></div>
             </div>
             <div class="products-grid">
                 <div class="product-card">
                     <div class="product-main">
                         <div class="product-header">
-                            <div class="product-icon">📊</div>
+                            <div class="product-icon">🌾</div>
                             <h3 class="product-title">Lipalo <span class="product-badge">Live</span></h3>
                         </div>
-                        <p class="product-desc">Lesotho data assistant. Ask questions about population, economy, agriculture—get instant answers with citations from official sources.</p>
+                        <p class="product-desc">Lesotho's AI-powered agricultural advisory system. Real-time weather alerts with farming impact analysis, FAO-based crop calendars for all four agro-ecological zones, soil analysis with crop suitability ratings, and FAO-56 irrigation scheduling — built on Anthropic Claude AI.</p>
                         <div class="product-stats">
-                            <span class="product-stat"><strong>15,000+</strong> queries answered</span>
-                            <span class="product-stat"><strong>10+</strong> govt departments using</span>
+                            <span class="product-stat"><strong>8 crops</strong> across all 10 districts</span>
+                            <span class="product-stat"><strong>101</strong> agronomy knowledge chunks</span>
+                            <span class="product-stat"><strong>40+</strong> API endpoints</span>
                         </div>
-                        <a href="https://lipalo.4dcs.co.za" target="_blank" class="product-link">Try Lipalo Free →</a>
+                        <a href="https://lipalo.4dcs.co.za" target="_blank" class="product-link">Try Lipalo →</a>
                     </div>
                     <div class="product-demo">
                         <div class="demo-label">Example Query</div>
                         <div class="demo-conversation">
-                            <div class="demo-q">What was maize production in Leribe district last year?</div>
-                            <div class="demo-a">Leribe produced 12,450 metric tons of maize in 2023, representing 18% of national production. <em>Source: Bureau of Statistics</em></div>
+                            <div class="demo-q">When should I plant maize in Leribe this season?</div>
+                            <div class="demo-a">For Leribe's lowland zone, plant maize between mid-October and mid-November once soil temperature holds above 15°C. Rain outlook this week favours early preparation. <em>Source: Lipalo crop calendar, Lesotho agro-ecological zoning</em></div>
                         </div>
                     </div>
                 </div>
@@ -281,9 +323,23 @@
                     <div class="product-main">
                         <div class="product-header">
                             <div class="product-icon">🚗</div>
+                            <h3 class="product-title">Hlahloba <span class="product-badge res">Pilot</span></h3>
+                        </div>
+                        <p class="product-desc">AI-powered vehicle claims assessment for insurers — damage detection, automated repair cost estimation, and fraud checks from claim photos. "Hlahloba" means "to examine" in Sesotho.</p>
+                        <div class="product-stats">
+                            <span class="product-stat"><strong>&lt;5 min</strong> vs 3–7 days manual</span>
+                            <span class="product-stat"><strong>95%</strong> damage detection accuracy</span>
+                        </div>
+                        <a href="hlahloba.html" class="product-link">Learn About Hlahloba →</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-main">
+                        <div class="product-header">
+                            <div class="product-icon">🛂</div>
                             <h3 class="product-title">Traffic Monitor <span class="product-badge">Live</span></h3>
                         </div>
-                        <p class="product-desc">Real-time AI analysis of Maseru Bridge border crossing. Know before you go—avoid peak congestion at Lesotho busiest checkpoint.</p>
+                        <p class="product-desc">Real-time AI vision analysis of the Maseru Bridge border crossing. Know before you go — avoid peak congestion at Lesotho's busiest checkpoint.</p>
                         <div class="product-stats">
                             <span class="product-stat"><strong>500+</strong> daily analyses</span>
                             <span class="product-stat"><strong>35,000+</strong> monthly insights</span>
@@ -297,33 +353,28 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="section-header" style="margin-top: 2.5rem;">
-                <div class="section-label">Coming Soon</div>
-                <h2 class="section-title">Solutions in Development</h2>
-            </div>
-            <div class="products-grid">
                 <div class="product-card">
                     <div class="product-main">
                         <div class="product-header">
-                            <div class="product-icon">🌾</div>
-                            <h3 class="product-title">Agri Advisory <span class="product-badge soon">In Dev</span></h3>
+                            <div class="product-icon">💊</div>
+                            <h3 class="product-title">RxPlan <span class="product-badge soon">In Dev</span></h3>
                         </div>
-                        <p class="product-desc">Smart farming advice via SMS and WhatsApp. Pest ID, weather alerts, planting calendars—works on any phone, in Sesotho.</p>
-                        <span class="product-stat" style="color: var(--gray);">Pilot launching Q2 2025</span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-main">
-                        <div class="product-header">
-                            <div class="product-icon">💳</div>
-                            <h3 class="product-title">Credit Scoring <span class="product-badge soon">In Dev</span></h3>
-                        </div>
-                        <p class="product-desc">Alternative credit models for underbanked populations. Uses mobile and utility data where traditional metrics dont exist.</p>
-                        <span class="product-stat" style="color: var(--gray);">API available for partners</span>
+                        <p class="product-desc">AI-based prescription and medication planning support for health facilities and pharmacies.</p>
+                        <a href="https://rxplan.co.za" target="_blank" class="product-link">rxplan.co.za →</a>
                     </div>
                 </div>
             </div>
+
+            <div class="research-block">
+                <div class="research-label">Research Collaboration · University of Virginia</div>
+                <h3>AI for Agricultural Resilience — UVA × 4D Decision Support System</h3>
+                <p>With faculty at the University of Virginia and the National University of Lesotho, 4D is piloting a retrieval-augmented (RAG) AI Decision Support System that turns ReNOKA's 500-page Compendium of soil and water conservation measures into real-time, actionable guidance for extension agents and farmers — continuously improved through expert-in-the-loop feedback, with Sesotho-language support planned.</p>
+                <div class="research-meta">
+                    <span><strong>17 extension agents</strong> · 340 farmers</span>
+                    <span><strong>Two planting seasons</strong>, 2026–2027</span>
+                </div>
+            </div>
+
             <div class="difference-block">
                 <div class="difference-header">See the Difference</div>
                 <div class="difference-content">
@@ -333,14 +384,14 @@
                     </div>
                     <div class="difference-side after">
                         <div class="difference-label">With 4D AI</div>
-                        <p>Ask in plain English, get cited answers in seconds. Real-time data, always available, works offline.</p>
+                        <p>Ask in plain language, get cited answers in seconds. Real-time data, always available, built for low bandwidth.</p>
                     </div>
                 </div>
             </div>
             <div class="cta-block">
                 <h3>Need something custom?</h3>
                 <p>We build bespoke AI solutions for your specific challenges.</p>
-                <a href="https://wa.me/27761080024?text=Hi%2C%20I%20need%20a%20custom%20AI%20solution." class="btn btn-whatsapp">
+                <a href="https://wa.me/26656300091?text=Hi%2C%20I%20need%20a%20custom%20AI%20solution." class="btn btn-whatsapp">
                     <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                     Discuss Custom Solution
                 </a>
@@ -353,14 +404,15 @@
             <div class="section-header">
                 <div class="section-label">Who We Serve</div>
                 <h2 class="section-title">Solutions for Your Sector</h2>
+                <div class="tri"><i></i><i></i><i></i></div>
             </div>
             <div class="sectors-grid">
-                <div class="sector-card"><div class="sector-header"><span class="sector-icon">🏛️</span><h4>Government</h4></div><p>Data dashboards, citizen portals, M&E systems for ministries.</p></div>
-                <div class="sector-card"><div class="sector-header"><span class="sector-icon">🌍</span><h4>NGOs & Development</h4></div><p>Field data collection, impact tracking, beneficiary management.</p></div>
-                <div class="sector-card"><div class="sector-header"><span class="sector-icon">🏦</span><h4>Financial Services</h4></div><p>Credit scoring, fraud detection, customer analytics.</p></div>
-                <div class="sector-card"><div class="sector-header"><span class="sector-icon">🌾</span><h4>Agriculture</h4></div><p>Farm management, supply chain, extension services.</p></div>
-                <div class="sector-card"><div class="sector-header"><span class="sector-icon">🏢</span><h4>Local Business</h4></div><p>Process automation, chatbots, inventory optimization.</p></div>
-                <div class="sector-card"><div class="sector-header"><span class="sector-icon">🎓</span><h4>Education & Research</h4></div><p>Data analysis, research tools, student management.</p></div>
+                <div class="sector-card"><div class="sector-header"><span class="sector-icon">🏛️</span><h4>Government</h4></div><p>Registries, dashboards, citizen portals, and M&amp;E systems for ministries — with audit trails and role-based access.</p></div>
+                <div class="sector-card"><div class="sector-header"><span class="sector-icon">🌍</span><h4>NGOs &amp; Development</h4></div><p>Offline-first field data collection, impact tracking, beneficiary management.</p></div>
+                <div class="sector-card"><div class="sector-header"><span class="sector-icon">🏦</span><h4>Financial Services</h4></div><p>Claims assessment, fraud detection, customer analytics, financial inclusion platforms.</p></div>
+                <div class="sector-card"><div class="sector-header"><span class="sector-icon">🌾</span><h4>Agriculture</h4></div><p>AI advisory, farm management, supply chain, extension services.</p></div>
+                <div class="sector-card"><div class="sector-header"><span class="sector-icon">🏢</span><h4>Local Business</h4></div><p>Process automation, chatbots, point-of-sale, inventory optimization.</p></div>
+                <div class="sector-card"><div class="sector-header"><span class="sector-icon">🎓</span><h4>Education &amp; Research</h4></div><p>Data analysis, research tools, learning platforms, student management.</p></div>
             </div>
         </div>
     </section>
@@ -370,11 +422,13 @@
             <div class="section-header">
                 <div class="section-label">Built for Southern Africa</div>
                 <h2 class="section-title">Why It Works Here</h2>
+                <div class="tri"><i></i><i></i><i></i></div>
             </div>
             <ul class="simple-list">
                 <li><span class="icon">📶</span><div><strong>2G/3G Optimized</strong> — <span>Light pages, compressed data, works on slow connections</span></div></li>
                 <li><span class="icon">📴</span><div><strong>Offline-First</strong> — <span>Apps work without internet, sync when connected</span></div></li>
                 <li><span class="icon">🗣️</span><div><strong>Local Languages</strong> — <span>Sesotho and Zulu interfaces, voice support coming</span></div></li>
+                <li><span class="icon">🔒</span><div><strong>Secure by Design</strong> — <span>Role-based access, encrypted storage, full audit trails</span></div></li>
                 <li><span class="icon">💵</span><div><strong>Regional Pricing</strong> — <span>Southern Africa rates, not Silicon Valley invoices</span></div></li>
                 <li><span class="icon">🧪</span><div><strong>Field-Tested</strong> — <span>Every solution tested in real rural conditions</span></div></li>
             </ul>
@@ -385,28 +439,29 @@
         <div class="container">
             <div class="section-header">
                 <div class="section-label">Track Record</div>
-                <h2 class="section-title">Projects & Results</h2>
+                <h2 class="section-title">Projects &amp; Results</h2>
+                <div class="tri"><i></i><i></i><i></i></div>
             </div>
             <div class="proof-grid">
                 <div class="proof-item">
+                    <div class="proof-header"><h4>CIMS — Compensation Registry</h4><span class="proof-type">LLWDP III · AfDB</span></div>
+                    <p>Live compensation information management system for the Lowlands Water Development Project Phase III — asset verification, valuation, and payment tracking with full audit trails.</p>
+                    <div class="proof-metric"><strong>1,388 PAPs</strong> • <strong>94% verified</strong> • <strong>25 routes</strong></div>
+                </div>
+                <div class="proof-item">
                     <div class="proof-header"><h4>LLWDP II Water Project</h4><span class="proof-type">World Bank</span></div>
-                    <p>Mobile data collection for community mobilization across Lesotho water sector.</p>
+                    <p>Mobile data collection for community mobilization across Lesotho's water sector.</p>
                     <div class="proof-metric"><strong>4 zones</strong> • <strong>50+ field agents</strong> • <strong>10,000+ households</strong></div>
                 </div>
                 <div class="proof-item">
-                    <div class="proof-header"><h4>SADP II Agriculture</h4><span class="proof-type">Government</span></div>
-                    <p>Service provider management and M&E platform for smallholder agriculture.</p>
+                    <div class="proof-header"><h4>SADP II Agriculture</h4><span class="proof-type">Government · World Bank</span></div>
+                    <p>Service provider management and M&amp;E platform for smallholder agriculture.</p>
                     <div class="proof-metric"><strong>8 districts</strong> • <strong>200+ service providers</strong></div>
                 </div>
                 <div class="proof-item">
                     <div class="proof-header"><h4>AI Extension Research</h4><span class="proof-type">University of Virginia</span></div>
-                    <p>Voice-based farming advisories for low-literacy users via basic phones.</p>
-                    <div class="proof-metric"><strong>Research collaboration</strong> • Voice AI in Sesotho</div>
-                </div>
-                <div class="proof-item">
-                    <div class="proof-header"><h4>Maseru Bridge Traffic</h4><span class="proof-type">Public Tool</span></div>
-                    <p>Real-time border crossing analysis helping travelers reduce wait times.</p>
-                    <div class="proof-metric"><strong>500+ daily</strong> • <strong>35,000+ monthly</strong> insights</div>
+                    <p>AI decision support for extension agents built on the ReNOKA Compendium, evaluated over two planting seasons.</p>
+                    <div class="proof-metric"><strong>17 agents</strong> • <strong>340 farmers</strong> • Sesotho AI</div>
                 </div>
             </div>
         </div>
@@ -417,12 +472,13 @@
             <div class="section-header">
                 <div class="section-label">Get Started</div>
                 <h2 class="section-title">Let's Build Something</h2>
+                <div class="tri"><i></i><i></i><i></i></div>
             </div>
             <div class="contact-grid">
                 <div class="contact-primary">
                     <h3>Start with a Conversation</h3>
-                    <p>Most projects begin with a 15-minute WhatsApp chat. Tell us your challenge, we share ideas—no commitment.</p>
-                    <a href="https://wa.me/27761080024?text=Hi%204D%20AI%2C%20I%27d%20like%20to%20discuss%20a%20project." class="btn btn-whatsapp">
+                    <p>Most projects begin with a 15-minute WhatsApp chat. Tell us your challenge, we share ideas — no commitment.</p>
+                    <a href="https://wa.me/26656300091?text=Hi%204D%20AI%2C%20I%27d%20like%20to%20discuss%20a%20project." class="btn btn-whatsapp">
                         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                         Chat on WhatsApp
                     </a>
@@ -430,13 +486,14 @@
                         <p>Or reach us directly:</p>
                         <div class="contact-links">
                             <a href="mailto:info@4dcs.co.za" class="contact-link">✉️ info@4dcs.co.za</a>
-                            <a href="tel:+27761080024" class="contact-link">📞 +27 76 108 0024</a>
+                            <a href="tel:+26622323442" class="contact-link">📞 +266 2232 3442</a>
+                            <a href="tel:+26656300091" class="contact-link">📱 +266 5630 0091</a>
                         </div>
                     </div>
                 </div>
                 <form class="contact-form" action="https://formsubmit.co/info@4dcs.co.za" method="POST">
                     <h3>Or send a message</h3>
-                    <input type="hidden" name="_subject" value="4D AI Labs - New Inquiry">
+                    <input type="hidden" name="_subject" value="4D AI - New Inquiry">
                     <input type="hidden" name="_captcha" value="false">
                     <div class="form-row">
                         <div class="form-group"><label for="name">Name</label><input type="text" id="name" name="name" required></div>
@@ -446,10 +503,11 @@
                     <div class="form-group"><label for="interest">What do you need?</label>
                         <select id="interest" name="interest">
                             <option value="">Select...</option>
-                            <option value="data-assistant">Data Assistant (like Lipalo)</option>
+                            <option value="advisory">AI Advisory (like Lipalo)</option>
+                            <option value="registry">Registry / Information System (like CIMS)</option>
                             <option value="analytics">Analytics / Monitoring</option>
                             <option value="agriculture">Agriculture Solution</option>
-                            <option value="financial">Credit / Financial</option>
+                            <option value="financial">Insurance / Financial</option>
                             <option value="custom">Custom AI Solution</option>
                         </select>
                     </div>
@@ -462,13 +520,15 @@
 
     <footer class="footer">
         <div class="container">
-            <p>© 2025 <a href="https://4dcs.co.za">4D Climate Solutions (Pty) Ltd</a></p>
-            <p class="footer-tagline">creative • innovative • green • sustainable</p>
+            <div class="bar"><i></i><i></i><i></i></div>
+            <img src="assets/logo-4d.png" alt="4D Climate Solutions">
+            <p>© 2026 <a href="https://4dcs.co.za">4D Climate Solutions (Pty) Ltd</a> · <a href="https://cims.4dcs.co.za">CIMS</a> · <a href="https://lipalo.4dcs.co.za">Lipalo</a></p>
+            <p class="footer-tagline">Creative • Innovative • Green • Sustainable</p>
         </div>
     </footer>
 
     <div class="sticky-cta">
-        <a href="https://wa.me/27761080024?text=Hi%204D%20AI%2C%20I%27d%20like%20to%20discuss%20a%20project." class="btn btn-whatsapp">
+        <a href="https://wa.me/26656300091?text=Hi%204D%20AI%2C%20I%27d%20like%20to%20discuss%20a%20project." class="btn btn-whatsapp">
             <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Discuss Your Project
         </a>
@@ -490,7 +550,7 @@
                 e.preventDefault();
                 const formData = new FormData(this);
                 const action = this.getAttribute('action');
-                
+
                 fetch(action, {
                     method: 'POST',
                     body: formData,
